@@ -1,0 +1,210 @@
+<!DOCTYPE html> <html lang="en"> <head> <title>Explanation for my presence.ts base on PreMiD - Blog of Hans</title> <meta charset="utf-8"/> <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/> <meta name="description" content=""/> <meta name="author" content="Hans5958"/> <meta property="og:type" content="website"/> <meta property="og:url" content="https://hans5958.github.io/blog/2020/06/29/explanation-for-my-presence-ts-base-on-premid"> <meta property="og:title" content="Explanation for my presence.ts base on PreMiD - Blog of Hans"/> <meta property="og:description" content=""> <meta property="og:site_name" content="Blog of Hans"/> <meta property="og:locale" content="en_US"/> <meta name="twitter:card" content="summary"/> <meta name="twitter:site" content="@Hans5958"/> <meta name="twitter:creator" content="@Hans5958"/> <meta name="twitter:url" content="https://hans5958.github.io/blog/2020/06/29/explanation-for-my-presence-ts-base-on-premid"/> <meta name="twitter:title" content="Explanation for my presence.ts base on PreMiD - Blog of Hans"/> <meta name="twitter:description" content=""/> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/> <link rel="stylesheet" href="/blog/assets/css/base.css"/> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-flash.min.css"/> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script> <script>Pace.on("done",()=>setTimeout(()=>Pace.options.ajax=!1,300));</script> <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script> <script src="/blog/assets/js/base.js"></script> <script async src="https://www.googletagmanager.com/gtag/js?id=UA-49890594-3"></script> <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-49890594-3");</script> </head> <body> <header><nav class="navbar navbar-expand-md bg-dark navbar-dark"> <a class="navbar-brand" href="/blog/"> Blog of Hans </a> <span class="nav-text ml-auto" style="color: #fff;"> <i>Ready or not, here we go!</i> </span> </nav></header> <main id="content"> <div class="container"> <div class="row"> <div class="col-lg-9"> <article itemscope itemtype="http://schema.org/BlogPosting"> <header class="post-header"> <h1 class="post-title" itemprop="name headline">Explanation for my presence.ts base on PreMiD</h1> <p class="post-meta"><time class="post-date-published" datetime="2020-06-29T09:26:00+00:00" itemprop="datePublished"> 29 June 2020 </time> </p> </header> <div class="post-body" itemprop="articleBody"> <p>This was originally written for someone on an open source project, PreMiD, and it was published <a href="https://github.com/Hans5958/PreMiD-Presences-Personal/blob/master/%23%20Docs/explanation-for-base.md">here</a>. Context probably not needed, but if you want, check out <a href="https://github.com/PreMiD/Presences">this repository</a> and check the <code>presence.ts</code> files, and <a href="https://docs.premid.app/en/dev/">this documentation</a>.</p> <hr/> <p>Hello, and welcome to my explanation for my base/template on <code>presence.ts</code>. You might be wondering either how this works or why this thing complicated. In this explanation text, I will guide you how I came with the base that I made, and consequently, solve this systematic problem that a lot of developers do, as I could say.</p> <p>Now, keep in mind, the problem is not quite a big deal, as the overhead will be small (in fact, it could be tiny), but I just wanted to see if I could make an optimized code, because I wanted to avoid having those small overhead makes my poor laptop laggy, and because I genuinely bored and wanted to do something.</p> <h2 id="initial-problem">Initial problem</h2> <p>So, as I said, there’s a “systematic” problem on some <code>presence.ts</code> that a lot of developers made. But, to know the problem, we need to see how the aforementioned developers did it.</p> <p>Here’s the “average” base that some developers do on <code>presence.ts</code>. Let’s assume that we’re only checking two pages.</p> <ol> <li>A dynamic page, which includes a video, and when changing into a new video, the page won’t reload, but the contents and the URL changed.</li> <li>A static page, which includes a login page.</li> </ol> <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">presence</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Presence</span><span class="p">({</span>
+	<span class="na">clientId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">000000000000000000</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="kd">var</span> <span class="nx">browsingStamp</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="nx">presence</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">UpdateData</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	
+	<span class="kd">var</span> <span class="na">presenceData</span><span class="p">:</span> <span class="nx">presenceData</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="na">details</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">Viewing an unsupported page</span><span class="dl">"</span><span class="p">,</span>
+			<span class="na">state</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="kc">undefined</span><span class="p">,</span>
+			<span class="na">largeImageKey</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">lg</span><span class="dl">"</span><span class="p">,</span>
+			<span class="na">startTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="nx">browsingStamp</span><span class="p">,</span>
+			<span class="na">endTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="kc">undefined</span>
+		<span class="p">}</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="c1">// it is a dynamic page) {</span>
+		<span class="nx">presenceData</span><span class="p">.</span><span class="nx">details</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Viewing a video</span><span class="dl">"</span>
+		<span class="nx">presenceData</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getQuerySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">.videoTitle</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="c1">// it is a static page) {</span>
+		<span class="nx">presenceData</span><span class="p">.</span><span class="nx">details</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Logging in</span><span class="dl">"</span>
+	<span class="p">}</span> <span class="c1">// and so on...</span>
+
+<span class="p">})</span>
+
+</code></pre></div></div> <p>Now, there are some problems. The <code>presenceData</code> keeps being declared/resetted.</p> <p>This is fine for the dynamic page, because having the script overwrites the old <code>presenceData</code> values is not a good idea, but it’s not fine for the static page, because it needs to set the <code>presenceData</code> value, even nothing has changed.</p> <p>There must be a way so only the dynamic page script runs every time, but not the static page script.</p> <p>That being said, we need to make a “handler” that does two different script, for the static pages and for the dynamic pages. Also, the “handler” needs to know if the script is for the dynamic pages or not. Hence, another “handler”.</p> <h2 id="part-1-the-update-function-handler">Part 1: The Update Function Handler</h2> <p>Firstly, we need to make a handler for functions that needs to run recursively. Perfect for dynamic pages that needs to do something more than once.</p> <p>Here’s the handler that I come with. It’s not exactly a callback, but that’s what I made few months ago.</p> <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">updateCallback</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">_function</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+	<span class="kd">get</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_function</span><span class="p">;</span>
+	<span class="p">},</span>
+	<span class="kd">set</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parameter</span><span class="p">){</span>
+		<span class="k">this</span><span class="p">.</span><span class="nx">_function</span> <span class="o">=</span> <span class="nx">parameter</span>
+	<span class="p">},</span>
+	<span class="kd">get</span> <span class="nx">present</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_function</span> <span class="o">!==</span> <span class="kc">null</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>This handler does three things.</p> <ol> <li><code>updateCallback.function = () =&gt; {}</code> sets the function to be updated recursively</li> <li><code>updateCallback.function()</code> executes the defined function.</li> <li><code>updateCallback.present()</code> returns a boolean if there is a update function that defined. This is to differentiate the dynamic pages and the static pages.</li> </ol> <p>On the main script, let’s put our dynamic function into the handler.</p> <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="c1">// it is a dynamic page) {</span>
+	<span class="nx">updateCallback</span><span class="p">.</span><span class="kd">function</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">presenceData</span><span class="p">.</span><span class="nx">details</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Viewing a video</span><span class="dl">"</span>
+		<span class="nx">presenceData</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getQuerySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">.videoTitle</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span>
+	<span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="c1">// it is a static page) {</span>
+	<span class="nx">presenceData</span><span class="p">.</span><span class="nx">details</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Logging in</span><span class="dl">"</span>
+<span class="p">}</span> <span class="c1">// and so on...</span>
+</code></pre></div></div> <p>All set, now let’s move into the the second part.</p> <h2 id="part-2-handler-for-codepresenceonquotupdatedataquotcode">Part 2: Handler for <code>presence.on(&quot;UpdateData&quot;)</code></h2> <p>Next, let’s make the handler that runs recursively for every moment PreMiD asks for a data update.</p> <p>Here’s what I come up with.</p> <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">updateCallback</span><span class="p">.</span><span class="nx">present</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">presence</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">UpdateData</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">currentURL</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">),</span>
+		<span class="nx">currentPath</span> <span class="o">=</span> <span class="nx">currentURL</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">),</span>
+		<span class="nx">presenceData</span> <span class="o">=</span> <span class="p">{</span>
+			<span class="na">details</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">Viewing an unsupported page</span><span class="dl">"</span><span class="p">,</span>
+			<span class="na">state</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="kc">undefined</span><span class="p">,</span>
+			<span class="na">largeImageKey</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">lg</span><span class="dl">"</span><span class="p">,</span>
+			<span class="na">startTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="nx">browsingStamp</span><span class="p">,</span>
+			<span class="na">endTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="kc">undefined</span>
+		<span class="p">};</span>
+		<span class="nx">updateCallback</span><span class="p">.</span><span class="kd">function</span><span class="p">()</span>
+		<span class="nx">presence</span><span class="p">.</span><span class="nx">setActivity</span><span class="p">(</span><span class="nx">presenceData</span><span class="p">)</span>
+	<span class="p">})</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+	<span class="nx">presence</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">UpdateData</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">presence</span><span class="p">.</span><span class="nx">setActivity</span><span class="p">(</span><span class="nx">presenceData</span><span class="p">)</span>
+	<span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>The way this handler works is as follows.</p> <ol> <li>If the update function is present, which is going to be true if it’s a dynamic page, reset <code>presenceData</code> values and some others, run the update function (which writes the new values to the resetted <code>presenceData</code>), and finally set the activity using the updated <code>presenceData</code> values.</li> <li>If it returns false, which is for the static pages, just set activity to the already configured <code>presenceData</code> values every single time.</li> </ol> <p>Now, I could do that as it is, but I will seperate the lines that related to resetting values into a single function, <code>resetData()</code>.</p> <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">updateCallback</span><span class="p">.</span><span class="nx">present</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">presence</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">UpdateData</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">resetData</span><span class="p">()</span>
+		<span class="nx">updateCallback</span><span class="p">.</span><span class="kd">function</span><span class="p">()</span>
+		<span class="nx">presence</span><span class="p">.</span><span class="nx">setActivity</span><span class="p">(</span><span class="nx">presenceData</span><span class="p">)</span>
+	<span class="p">})</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+	<span class="nx">presence</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">UpdateData</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">presence</span><span class="p">.</span><span class="nx">setActivity</span><span class="p">(</span><span class="nx">presenceData</span><span class="p">)</span>
+	<span class="p">})</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">resetData</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">currentURL</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">),</span>
+	<span class="nx">currentPath</span> <span class="o">=</span> <span class="nx">currentURL</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">),</span>
+	<span class="nx">presenceData</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="na">details</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">Viewing an unsupported page</span><span class="dl">"</span><span class="p">,</span>
+		<span class="na">state</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="kc">undefined</span><span class="p">,</span>
+		<span class="na">largeImageKey</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">lg</span><span class="dl">"</span><span class="p">,</span>
+		<span class="na">startTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="nx">browsingStamp</span><span class="p">,</span>
+		<span class="na">endTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="kc">undefined</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="finish-it-up">Finish it up</h2> <p>After having both handlers, let’s merge both of them into our <code>presence.ts</code> template. Note that I put declared <code>presenceData</code> once, on the top.</p> <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">presence</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Presence</span><span class="p">({</span>
+	<span class="na">clientId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">000000000000000000</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="kd">var</span> <span class="nx">presenceData</span><span class="p">:</span> <span class="nx">presenceData</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="na">details</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">Viewing an unsupported page</span><span class="dl">"</span><span class="p">,</span>
+		<span class="na">state</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="kc">undefined</span><span class="p">,</span>
+		<span class="na">largeImageKey</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">lg</span><span class="dl">"</span><span class="p">,</span>
+		<span class="na">startTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="nx">browsingStamp</span><span class="p">,</span>
+		<span class="na">endTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="kc">undefined</span>
+	<span class="p">},</span>
+	<span class="nx">updateCallback</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="na">_function</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+		<span class="kd">get</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_function</span><span class="p">;</span>
+		<span class="p">},</span>
+		<span class="kd">set</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parameter</span><span class="p">){</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">_function</span> <span class="o">=</span> <span class="nx">parameter</span>
+		<span class="p">},</span>
+		<span class="kd">get</span> <span class="nx">present</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_function</span> <span class="o">!==</span> <span class="kc">null</span>
+		<span class="p">}</span>
+	<span class="p">};</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="c1">// it is a dynamic page) {</span>
+	<span class="nx">updateCallback</span><span class="p">.</span><span class="kd">function</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">presenceData</span><span class="p">.</span><span class="nx">details</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Viewing a video</span><span class="dl">"</span>
+		<span class="nx">presenceData</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getQuerySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">.videoTitle</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span>
+	<span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="c1">// it is a static page) {</span>
+	<span class="nx">presenceData</span><span class="p">.</span><span class="nx">details</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Logging in</span><span class="dl">"</span>
+<span class="p">}</span> <span class="c1">// and so on...</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">updateCallback</span><span class="p">.</span><span class="nx">present</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">presence</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">UpdateData</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">resetData</span><span class="p">()</span>
+		<span class="nx">updateCallback</span><span class="p">.</span><span class="kd">function</span><span class="p">()</span>
+		<span class="nx">presence</span><span class="p">.</span><span class="nx">setActivity</span><span class="p">(</span><span class="nx">presenceData</span><span class="p">)</span>
+	<span class="p">})</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+	<span class="nx">presence</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">UpdateData</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">presence</span><span class="p">.</span><span class="nx">setActivity</span><span class="p">(</span><span class="nx">presenceData</span><span class="p">)</span>
+	<span class="p">})</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">resetData</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">currentURL</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">),</span>
+	<span class="nx">currentPath</span> <span class="o">=</span> <span class="nx">currentURL</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">),</span>
+	<span class="nx">presenceData</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="na">details</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">Viewing an unsupported page</span><span class="dl">"</span><span class="p">,</span>
+		<span class="na">state</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="kc">undefined</span><span class="p">,</span>
+		<span class="na">largeImageKey</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">lg</span><span class="dl">"</span><span class="p">,</span>
+		<span class="na">startTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="nx">browsingStamp</span><span class="p">,</span>
+		<span class="na">endTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="kc">undefined</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>As we can see, the problems that we found has been solved. The <code>presenceData</code> values is being resetted the only time that we need (which is for dynamic pages), and the static page script only run once and the handler <em>handles</em> the rest, by setting the same values again and again.</p> <p>Tidy up some things, such as adding some variables such as <code>currentURL</code> and <code>currentPath</code>, informations regarding to our functions, here’s the final template.</p> <div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">presence</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Presence</span><span class="p">({</span>
+	<span class="na">clientId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">000000000000000000</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="kd">var</span> <span class="nx">currentURL</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">),</span>
+	<span class="nx">currentPath</span> <span class="o">=</span> <span class="nx">currentURL</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">),</span>
+	<span class="nx">browsingStamp</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">),</span> 
+	<span class="nx">presenceData</span><span class="p">:</span> <span class="nx">presenceData</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="na">details</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">Viewing an unsupported page</span><span class="dl">"</span><span class="p">,</span>
+		<span class="na">state</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="kc">undefined</span><span class="p">,</span>
+		<span class="na">largeImageKey</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">lg</span><span class="dl">"</span><span class="p">,</span>
+		<span class="na">startTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="nx">browsingStamp</span><span class="p">,</span>
+		<span class="na">endTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="kc">undefined</span>
+	<span class="p">},</span>
+	<span class="nx">updateCallback</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="na">_function</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+		<span class="kd">get</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_function</span><span class="p">;</span>
+		<span class="p">},</span>
+		<span class="kd">set</span> <span class="kd">function</span><span class="p">(</span><span class="nx">parameter</span><span class="p">){</span>
+			<span class="k">this</span><span class="p">.</span><span class="nx">_function</span> <span class="o">=</span> <span class="nx">parameter</span>
+		<span class="p">},</span>
+		<span class="kd">get</span> <span class="nx">present</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_function</span> <span class="o">!==</span> <span class="kc">null</span>
+		<span class="p">}</span>
+	<span class="p">};</span>
+
+<span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+
+	<span class="k">if</span> <span class="p">(</span><span class="c1">// it is a dynamic page) {</span>
+		<span class="nx">updateCallback</span><span class="p">.</span><span class="kd">function</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+			<span class="nx">presenceData</span><span class="p">.</span><span class="nx">details</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Viewing a video</span><span class="dl">"</span>
+			<span class="nx">presenceData</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getQuerySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">.videoTitle</span><span class="dl">"</span><span class="p">).</span><span class="nx">textContent</span>
+		<span class="p">}</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="c1">// it is a static page) {</span>
+		<span class="nx">presenceData</span><span class="p">.</span><span class="nx">details</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Logging in</span><span class="dl">"</span>
+	<span class="p">}</span> <span class="c1">// and so on...</span>
+
+<span class="p">})()</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">updateCallback</span><span class="p">.</span><span class="nx">present</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">presence</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">UpdateData</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">resetData</span><span class="p">()</span>
+		<span class="nx">updateCallback</span><span class="p">.</span><span class="kd">function</span><span class="p">()</span>
+		<span class="nx">presence</span><span class="p">.</span><span class="nx">setActivity</span><span class="p">(</span><span class="nx">presenceData</span><span class="p">)</span>
+	<span class="p">})</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+	<span class="nx">presence</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">UpdateData</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+		<span class="nx">presence</span><span class="p">.</span><span class="nx">setActivity</span><span class="p">(</span><span class="nx">presenceData</span><span class="p">)</span>
+	<span class="p">})</span>
+<span class="p">}</span>
+
+<span class="cm">/**
+ * Initialize/reset presenceData.
+ */</span>
+<span class="kd">function</span> <span class="nx">resetData</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">currentURL</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">href</span><span class="p">),</span>
+	<span class="nx">currentPath</span> <span class="o">=</span> <span class="nx">currentURL</span><span class="p">.</span><span class="nx">pathname</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">/</span><span class="dl">"</span><span class="p">),</span>
+	<span class="nx">presenceData</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="na">details</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">Viewing an unsupported page</span><span class="dl">"</span><span class="p">,</span>
+		<span class="na">state</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="kc">undefined</span><span class="p">,</span>
+		<span class="na">largeImageKey</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="dl">"</span><span class="s2">lg</span><span class="dl">"</span><span class="p">,</span>
+		<span class="na">startTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="nx">browsingStamp</span><span class="p">,</span>
+		<span class="na">endTimestamp</span><span class="p">:</span> <span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span> <span class="kc">undefined</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>So, there we have it. that’s how I made my base/template script, that is optimized and systematically made. Hope you can learn something related to coding, especially optimizing code, or problem solving in general.</p> </div> </article> </div> <div class="col-lg-3 sidebar d-none d-lg-block"> <h2>Recent posts</h2> <ul><li><a href="/blog/2020/07/27/welcome-jekyll">Welcome to Jekyll!</a></li><li><a href="/blog/2020/06/29/explanation-for-my-presence-ts-base-on-premid">Explanation for my presence.ts base on PreMiD</a></li><li><a href="/blog/2019/06/25/scavenger-hunt-writeups-1">Scavenger Hunt Writeups - ChillZone, June 2019</a></li><li><a href="/blog/2018/08/20/minecraft-hd-heads">Cracking the mystery of Minecraft HD Heads, alone</a></li><li><a href="/blog/2018/07/02/google-assistants-the-riddle-doors-answers">Google Assistant&#39;s The Riddle Doors Answers</a></li></ul> <hr/> <h2>Categories</h2> <ul><li><a href="/blog/category/uncategorized">Uncategorized</a></li><li><a href="/blog/category/article">Article</a></li></ul> <hr/> <h2>Tags</h2><span><a href="/blog/tag/en">en</a> </span><span><a href="/blog/tag/programming">programming</a> </span><span><a href="/blog/tag/jekyll">jekyll</a> </span><span><a href="/blog/tag/update">update</a> </span> </div> </div> </div> </main> <footer class="footer text-middle"> <div class="container"> <span class="text-muted">Copyright (c) 2021, Hans5958. <a href="https://github.com/Hans5958/blog">Site repository</a>. Revision <a href="https://github.com/Hans5958/blog/commit/e245fef5e5e5474a8b890e7d68f53835153223b6"><code>e245fef</code></a>.</span> </div> </footer> </body> </html>
