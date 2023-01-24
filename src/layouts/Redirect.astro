@@ -19,14 +19,14 @@ let {
 		<meta charset="utf-8">
 	
 		<title>{ url }</title>
-		<!-- <link rel="canonical" href="{ url }" />
-		<meta http-equiv="refresh" content="0; URL={ url }"> -->
+		<link rel="canonical" href={ new URL(url, Astro.site).toString() } />
+		<meta http-equiv="refresh" content={ "0; URL=" + url }>
 		
 	</head>
 	
-	<body>
+	<body class='p-4'>
 	
-		<p>Redirecting to <a href={ url }>{ url }</a>...</p>
+		<p>Redirecting to <a href={ url } class="text-sky-600 hover:underline focus:underline active:text-sky-900">{ url }</a>...</p>
 	
 	</body>
 
