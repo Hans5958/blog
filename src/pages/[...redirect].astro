@@ -9,7 +9,7 @@ export async function getStaticPaths() {
 	return blogEntries.flatMap(post => {
 		return post.data.redirect_from?.map(url => ({
 			params: { redirect: url }, 
-			props: { url: baseUrl('/' + post.data.slug) },
+			props: { url: baseUrl('/' + post.slug) },
 		}))
 	}).filter(el => el)
 }

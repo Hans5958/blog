@@ -6,7 +6,6 @@ const postCollection = defineCollection({
     date: z.string().transform(str => new Date(str)),
     category: z.string().default('Uncategorized'),
     tags: z.string().default('').transform(str => str.split(' ')),
-    slug: z.string(),
     description: z.string().default(''),
     excerpt: z.string().default(''),
     cover: z.object({
