@@ -15,7 +15,7 @@
     "@astrojs/rss": "^2.1.0-beta.0",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^3.0.0-beta.1",
-    "@astrojs/vue": "^1.2.2",
+    "@astrojs/vue": "^2.0.0",
     "@giscus/vue": "^2.2.6",
     "astro": "^2.0.0-beta.3",
     "astro-icon": "^0.8.0",
