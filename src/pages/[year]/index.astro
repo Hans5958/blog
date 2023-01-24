@@ -1,0 +1,29 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content'
+import Archive from '../../layouts/Archive.astro'
+
+export async function getStaticPaths() {
+	const blogEntries = await getCollection('posts')
+	blogEntries.sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+	
+	const years: { [index: number]: CollectionEntry<'posts'>[] } = {}
+	
+	blogEntries.forEach(post => {
+		const postYear = post.data.date.getFullYear()
+		if (!years[postYear]) {
+			years[postYear] = []
+		}
+		years[postYear].push(post)
+	})
+
+	return Object.entries(years).map(([year, pages]) => ({
+		params: { year: year },
+		props: { year: year, data: pages }
+	}))
+}
+
+const { data, year } = Astro.props;
+const title = `Year: ${year}`
+---
+
+<Archive data={data} title={title} />

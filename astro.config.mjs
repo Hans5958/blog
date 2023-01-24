@@ -1,12 +1,18 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-
-// https://astro.build/config
 import tailwind from "@astrojs/tailwind";
+import vue from "@astrojs/vue";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
-  integrations: [mdx(), sitemap(), tailwind()]
+  site: 'https://hans5958.github.io',
+  base: '/blog',
+  integrations: [mdx(), sitemap(), tailwind(), vue()],
+  markdown: {
+    shikiConfig: {
+      theme: 'github-light',
+      langs: []
+    }
+  }
 });

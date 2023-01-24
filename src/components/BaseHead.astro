@@ -1,43 +1,64 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '../styles/global.css';
+import { SITE_AUTHOR, SITE_TITLE, SITE_TWITTER } from '../config.js';
+import '../styles/global.scss';
 
 export interface Props {
-	title: string;
-	description: string;
-	image?: string;
+	title?: string;
+	description?: string;
+	noAnalytics?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
+let { 
+	title = "", 
+	description = "", 
+	noAnalytics = false 
+} = Astro.props;
+
+if (title === "Index") title = SITE_TITLE
+else title += ` - ${ SITE_TITLE }`
+
+const baseUrl = import.meta.env.BASE_URL
 ---
 
-<!-- Global Metadata -->
+<title>{ title }</title>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta name="generator" content={Astro.generator} />
-
-<!-- Canonical URL -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content={ description } />
+<meta name="author" content={ SITE_AUTHOR } />
+<meta name="generator" content={ Astro.generator } />
 <link rel="canonical" href={canonicalURL} />
 
-<!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
-
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:url" content={ Astro.url }>
+<meta property="og:title" content={ title } />
+<meta property="og:description" content={ description }>
+<meta property="og:site_name" content={ SITE_TITLE } />
+<meta property="og:locale" content="en_US" />
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content={ SITE_TWITTER } />
+<meta name="twitter:creator" content={ SITE_TWITTER } />
+<meta name="twitter:url" content={ Astro.url } />
+<meta name="twitter:title" content={ title } />
+<meta name="twitter:description" content={ description } />
+
+<!-- Require Script and Loading Page -->
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css,npm/pace-js@1.2.4/themes/blue/pace-theme-flash.min.css" />
+<link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}" />
+
+<script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.5.1/dist/jquery.min.js,npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js,npm/pace-js@1.2.4,npm/@iconify/iconify@1.0.7"></script>
+<script>Pace.on("done", () => setTimeout(() => Pace.options.ajax = false, 300));</script>
+<script src="{{ '/assets/js/base.js' | relative_url }}"></script> -->
+
+<!-- 
+TODO: https://www.kevinzunigacuellar.com/blog/google-analytics-in-astro/	
+{ noAnalytics &&
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-49890594-3"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() {dataLayer.push(arguments)}; gtag("js", new Date); gtag("config", "UA-49890594-3")</script>
+}
+{% endunless %} -->

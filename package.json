@@ -1,5 +1,5 @@
 {
-  "name": "@hans5958/website",
+  "name": "@hans5958/blog",
   "type": "module",
   "version": "1.0.0",
   "private": true,
@@ -11,11 +11,21 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.14.0",
-    "@astrojs/rss": "^2.0.0",
+    "@astrojs/mdx": "^1.0.0-beta.2",
+    "@astrojs/rss": "^2.1.0-beta.0",
     "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/tailwind": "^2.1.3",
-    "astro": "^1.9.0",
-    "tailwindcss": "^3.2.4"
+    "@astrojs/tailwind": "^3.0.0-beta.1",
+    "@astrojs/vue": "^1.2.2",
+    "@giscus/vue": "^2.2.6",
+    "astro": "^2.0.0-beta.3",
+    "astro-icon": "^0.8.0",
+    "dayjs": "^1.11.7",
+    "remark-gfm": "^3.0.1",
+    "remark-html": "^15.0.1",
+    "remark-parse": "^10.0.1",
+    "sass": "^1.57.1",
+    "tailwindcss": "^3.2.4",
+    "unified": "^10.1.2",
+    "vue": "^3.2.45"
   }
 }

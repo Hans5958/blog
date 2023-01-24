@@ -1,0 +1,36 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content'
+import Archive from '../../../layouts/Archive.astro'
+
+export async function getStaticPaths() {
+	const blogEntries = await getCollection('posts')
+	blogEntries.sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+
+	const tags: { [index: string]: CollectionEntry<'posts'>[] } = {}
+	
+	// console.log(blogEntries)
+
+	blogEntries.forEach(post => {
+		const postTags = post.data?.tags || [] 
+		// console.log(postTags)
+		postTags.forEach(tag => {
+			if (!tags[tag]) {
+				tags[tag] = []
+			}
+			tags[tag].push(post)
+		})
+	})
+
+	// console.log(tags)
+
+	return Object.entries(tags).map(([tag, pages]) => ({
+		params: { tag: tag },
+		props: { tag: tag, data: pages }
+	}))
+}
+
+const { data, tag } = Astro.props;
+const title = `Tag: ${tag}`
+---
+
+<Archive data={data} title={title} />

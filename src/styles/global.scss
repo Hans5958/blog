@@ -1,0 +1,145 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.post-body {
+
+	h1, h2, h3, h4, h5, h6 {
+		@apply mt-6 mb-4;
+	}
+
+	h2 {
+		@apply text-3xl font-semibold
+	}
+
+	h3 {
+		@apply text-2xl font-semibold
+	}
+
+	h4 {
+		@apply text-xl font-semibold
+	}
+	
+	h5 {
+		@apply text-lg font-semibold
+	}
+
+	h6 {
+		@apply font-semibold
+	}
+
+	blockquote, details, dl, ol, p, pre, table, ul, .highlight {
+		@apply mb-4
+	}
+
+	hr {
+		@apply my-4
+	}
+
+	> :first-child,
+	* > :first-child {
+		@apply mt-0
+	}
+
+	> :last-child,
+	* > :last-child {
+		@apply mb-0
+	}
+
+	blockquote {
+		@apply px-4 py-0 text-gray-500 border-l-4 border-l-gray-400;
+	}
+
+	a {
+		@apply text-blue-600;
+
+		&:hover {
+			@apply text-blue-600 underline;
+		}
+
+		&:active {
+			@apply text-blue-900
+		}
+	}
+
+	> code,
+	*:not(.astro-code) code, 
+	tt {
+
+		@apply m-0 rounded text-inherit;
+		padding: 0.2em 0.4em;
+		font-size: 85%;
+	
+		br {
+			@apply hidden
+		}
+	}
+
+	pre {
+		@apply bg-gray-50 #{!important};
+		word-wrap: normal;
+		> code {
+			@apply p-0 m-0 break-normal border-0 bg-transparent whitespace-pre;
+			font-size: 100%;
+		}
+	}
+	
+	pre {
+		@apply p-4 rounded-md
+	}
+
+	// .astro-code code {
+	// 	background-color: transparent !important;
+	// }
+
+	// pre {
+	// 	background-color: $bs-gray-100;
+	// }
+
+	kbd, tt, samp,
+	> code,
+	*:not(.astro-code) code {
+		@apply bg-gray-100
+	}
+
+	table {
+		@apply block w-full overflow-auto;
+	
+		th, td {
+			padding: 6px 13px;
+			@apply border border-gray-300
+		}
+
+		tr {
+			@apply border-t-gray-300 border-t border-t-gray-300;
+			
+			
+			&:nth-child(2n) {
+				@apply bg-gray-200
+			}
+
+			> th:empty {
+				@apply border-transparent border-b-gray-200 p-0;
+			}
+		}
+	
+		img {
+			@apply bg-transparent
+		}
+	}
+
+	img {
+		@apply max-w-full;
+	}
+
+	h1:first-child {
+		@apply mt-0
+	}
+
+	li {
+		* {
+			@apply mb-2
+		}
+	}
+
+}

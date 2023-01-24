@@ -1,13 +1,11 @@
 ---
+import { SITE_AUTHOR } from "../config.js";
+
 const today = new Date();
 ---
 
-<footer>
-	&copy; {today.getFullYear()} YOUR NAME HERE. All rights reserved.
+<footer class="py-4 bg-gray-800 text-white">
+	<div class="container mx-auto max-w-[1140px]">
+		<span class="text-muted">Copyright (c) { today.getFullYear() }, { SITE_AUTHOR }. <a href="{{ site.repository }}">Site repository</a>.</span>
+	</div>
 </footer>
-<style>
-	footer {
-		padding: 25px;
-		text-align: center;
-	}
-</style>

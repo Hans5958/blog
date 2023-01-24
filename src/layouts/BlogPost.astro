@@ -1,56 +1,62 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import type { CollectionEntry } from 'astro:content';
+import TableOfContents from '../components/TableOfContents.astro';
+import Default from './Default.astro';
+import Giscus from '@giscus/vue'
+import baseUrl from '../components/baseUrl.js';
 
-export interface Props {
-	content: {
-		title: string;
-		description: string;
-		pubDate?: string;
-		updatedDate?: string;
-		heroImage?: string;
-	};
+interface Props {
+  post: CollectionEntry<'posts'>;
 }
 
-const {
-	content: { title, description, pubDate, updatedDate, heroImage },
-} = Astro.props;
+// `post` will match your 'blog' collection schema type
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+
+const coverImageAstro = post.data.cover?.src || ""
 ---
 
-<html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<style>
-			.title {
-				font-size: 2em;
-				margin: 0.25em 0 0;
-			}
-			hr {
-				border-top: 1px solid #ddd;
-				margin: 1rem 0;
-			}
-		</style>
-	</head>
+<Default title={post.data.title} description={post.data.description}>
+	
+	<article class="container mx-auto md:max-w-[768px] py-6" itemscope itemtype="http://schema.org/BlogPosting">
+		<header class="post-header mb-4">
+			<h1 class="text-4xl font-bold mb-2" itemprop="name headline">{ post.data.title }</h1>
+			<p class="">
+				<time class="post-date-published" datetime={ post.data.date.toISOString() } itemprop="datePublished">
+					{ post.data.date.toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' }) }
+				</time>
+			</p>
+		</header>
 
-	<body>
-		<Header />
-		<main>
-			<article>
-				{heroImage && <img width={720} height={360} src={heroImage} alt="" />}
-				<h1 class="title">{title}</h1>
-				{pubDate && <time>{pubDate}</time>}
-				{
-					updatedDate && (
-						<div>
-							Last updated on <time>{updatedDate}</time>
-						</div>
-					)
-				}
-				<hr />
-				<slot />
-			</article>
-		</main>
-		<Footer />
-	</body>
-</html>
+		{ post.data.cover && (<>
+			<img itemprop="image" class="mb-3" src={ baseUrl(coverImageAstro.toString()) } alt="{ post.data.cover.alt }" />
+		</>) }
+
+		<div class="border mb-3 p-4 text-gray-500">
+			<h3 class="mb-2 pb-2 border-b">Contents</h3>
+			<div class="-ml-6">
+				<TableOfContents headings={ headings } />
+			</div>
+		</div>
+		
+		<div class="post-body" itemprop="articleBody">
+			<Content />
+		</div>
+		
+		<Giscus
+			id="comments"
+			repo="ScratchAddons/website-v2"
+			repoId="MDEwOlJlcG9zaXRvcnkzNjU3NzE1MTQ="
+			category="Page comments"
+			categoryId="DIC_kwDOFc06-s4COGAf"
+			mapping="pathname"
+			strict="1"
+			reactionsEnabled="1"
+			emitMetadata="0"
+			inputPosition="top"
+			theme="light"
+			lang="en"
+			loading="lazy"
+		/>	
+	</article>
+</Default>

@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse'
+import remarkGfm from 'remark-gfm'
+import remarkHtml from 'remark-html'
+import baseUrl from './baseUrl.js';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+// `post` will match your 'blog' collection schema type
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+
+const coverImageAstro = post.data.cover?.src || ""
+
+let excerpt = ""
+
+if (post.data.excerpt) {
+	const excerptUnified = await unified()
+		.use(remarkParse)
+		.use(remarkGfm)
+		.use(remarkHtml)
+		.process(post.data.excerpt)
+	excerpt = excerptUnified.toString()
+}
+
+---
+
+<a href={baseUrl('/' + post.data.slug)} class="block p-4 border shadow rounded hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 active:shadow-lg active:bg-gray-100 transition">
+	<article itemscope itemtype="http://schema.org/BlogPosting">
+
+		<header class="post-header mb-4">
+			<h1 class="text-4xl font-bold mb-2" itemprop="name headline">{ post.data.title }</h1>
+			<p class="">
+				<time class="post-date-published" datetime={ post.data.date.toISOString() } itemprop="datePublished">
+					{ post.data.date.toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' }) }
+				</time>
+			</p>
+		</header>
+		{ post.data.cover && (<>
+			<img itemprop="image" class="mb-3 w-40" src={ baseUrl(coverImageAstro.toString()) } alt="{ post.data.cover.alt }" />
+		</>) }
+		<div class="post-body" itemprop="articleBody" set:html={ excerpt }>	</div>
+		
+	</article>
+</a>

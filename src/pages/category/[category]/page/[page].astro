@@ -1,0 +1,36 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content'
+import { paginate } from '../../../../components/paginate.js'
+import ArchiveParted from '../../../../layouts/ArchiveParted.astro'
+
+export async function getStaticPaths({}) {
+	const blogEntries = await getCollection('posts')
+	blogEntries.sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+
+	const categories: { [index: string]: CollectionEntry<'posts'>[] } = {}
+	
+	blogEntries.forEach(post => {
+		const postCategories = post.data?.categories || [] 
+		// console.log(postCategories)
+		postCategories.forEach(category => {
+			if (!categories[category]) {
+				categories[category] = []
+			}
+			categories[category].push(post)
+		})
+	})
+
+	return Object.entries(categories).flatMap(([category, pages]) => {
+		let paginateResult = paginate(pages)
+		return paginateResult.map(paginatePage => ({
+			params: { category: category.toLowerCase(), page: paginatePage.currentPage },
+			props: { category: category, page: paginatePage }
+		}))
+	})
+}
+
+const { page, category } = Astro.props;
+const title = `Category: ${category}`
+---
+
+<ArchiveParted page={page} title={title} />

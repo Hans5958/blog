@@ -1,0 +1,43 @@
+---
+import { MarkdownHeading } from 'astro';
+import TableOfContentsChildren from './TableOfContentsChildren.astro';
+
+export interface Props {
+	headings: MarkdownHeading[];
+}
+
+export interface LeveledMarkdownHeading extends MarkdownHeading {
+	children: LeveledMarkdownHeading[];
+
+}
+
+const minLevel = 2
+const maxLevel = 6
+
+let { headings: headingsRaw } = Astro.props;
+
+const headings: LeveledMarkdownHeading[] = []
+
+// console.log(1, headings)
+
+headingsRaw.forEach(heading => {
+	let currentHeadings = headings
+	// console.log(heading.depth, currentHeadings)
+	for (var i = minLevel; i < heading.depth; i++) {
+		// console.log("LOOP " + i)
+		if (currentHeadings.length === 0) currentHeadings.push({
+			text: '',
+			slug: '',
+			depth: i,
+			children: [],
+		})
+		currentHeadings = currentHeadings[currentHeadings.length - 1].children
+	}
+	currentHeadings.push({
+		...heading,
+		children: []
+	})
+})
+---
+
+<TableOfContentsChildren headings={headings} />

@@ -1,0 +1,20 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content'
+import ArchiveParted from '../../layouts/ArchiveParted.astro'
+
+export async function getStaticPaths({ paginate }) {
+	const blogEntries = await getCollection('posts')
+	blogEntries.sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+
+	let paginateResult = paginate(blogEntries)
+	return paginateResult.map(paginatePage => ({
+		params: { ...paginatePage.params },
+		props: { ...paginatePage.props }
+	}))
+}
+
+const { page } = Astro.props;
+const title = ``
+---
+
+<ArchiveParted page={page} title={title} />

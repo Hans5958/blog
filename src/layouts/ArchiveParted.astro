@@ -1,0 +1,27 @@
+---
+import { Page } from 'astro';
+import { CollectionEntry, getCollection } from 'astro:content'
+import PostPreview from '../components/PostPreview.astro';
+import Default from './Default.astro';
+
+interface Props {
+	page: Page<CollectionEntry<'posts'>>;
+	title: string;
+}
+
+const { page, title } = Astro.props;
+
+
+const titleDisplay = `${title} - Archive`
+---
+
+<Default title={ titleDisplay }>
+	<section class="container mx-auto max-w-[1140px] py-12">
+		<h2 class="text-5xl font-bold mb-8">Archive</h2>
+		<div>
+			{ page.data.map(post => (<>
+				<PostPreview post={ post }/>
+			</>)) }
+		</div>
+	</section>
+</Default>
