@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content'
+import baseUrl from '../components/baseUrl.js'
+import Redirect from '../layouts/Redirect.astro'
+
+export async function getStaticPaths() {
+	const blogEntries = await getCollection('posts')
+
+	return blogEntries.flatMap(post => {
+		return post.data.redirect_from?.map(url => ({
+			params: { redirect: url }, 
+			props: { url: baseUrl('/' + post.data.slug) },
+		}))
+	}).filter(el => el)
+}
+
+const { url } = Astro.props;
+---
+
+<Redirect url={url} />

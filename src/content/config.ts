@@ -4,7 +4,7 @@ const postCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string().transform(str => new Date(str)),
-    categories: z.string().default('Uncategorized').transform(str => str.split(' ')),
+    category: z.string().default('Uncategorized'),
     tags: z.string().default('').transform(str => str.split(' ')),
     slug: z.string(),
     description: z.string().default(''),
@@ -12,7 +12,8 @@ const postCollection = defineCollection({
     cover: z.object({
       src: z.string(),
       alt: z.string().default('')
-    }).optional()
+    }).optional(),
+    redirect_from: z.string().array().optional()
   })
 });
 export const collections = {

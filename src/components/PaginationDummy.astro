@@ -1,0 +1,23 @@
+---
+import { Icon } from "astro-icon";
+import baseUrl from "./baseUrl.js";
+
+interface Props {
+	lastPage: number,
+	url: string,
+}
+
+const { lastPage, url } = Astro.props;
+
+---
+
+{ lastPage > 1 && <nav class="flex border rounded flex-shrink py-1">
+	<div class="flex grow justify-center items-center px-2">
+		Page 1 of { lastPage }
+	</div>
+	<div>
+		<a href={ baseUrl(url) } class="py-1 px-2 flex justify-center items-center">
+			Page 2 <Icon name="bi:arrow-right" class="ml-2 w-4 h-4" />
+		</a>
+	</div>
+</nav> }

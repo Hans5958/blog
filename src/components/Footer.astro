@@ -1,11 +1,9 @@
 ---
-import { SITE_AUTHOR } from "../config.js";
-
-const today = new Date();
+import { COPYRIGHT_YEAR, SITE_AUTHOR, SITE_REPOSITORY } from "../config.js";
 ---
 
 <footer class="py-4 bg-gray-800 text-white">
 	<div class="container mx-auto max-w-[1140px]">
-		<span class="text-muted">Copyright (c) { today.getFullYear() }, { SITE_AUTHOR }. <a href="{{ site.repository }}">Site repository</a>.</span>
+		<span class="text-muted">Copyright © { COPYRIGHT_YEAR }, { SITE_AUTHOR }. <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY }>Site repository</a>.</span>
 	</div>
 </footer>

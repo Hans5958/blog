@@ -42,7 +42,7 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 		</header>
 
 		{ post.data.cover && (<>
-			<img itemprop="image" class="mb-3" src={ baseUrl(coverImageAstro.toString()) } alt="{ post.data.cover.alt }" />
+			<img itemprop="image" class="mb-3" src={ baseUrl(coverImageAstro.toString()) } alt={ post.data.cover.alt } />
 		</>) }
 
 		<div class="border mb-3 p-4 text-gray-500">
@@ -65,23 +65,26 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 					{ i !== post.data.tags.length - 1 && ', ' }
 				</>) } 
 			</> }</p>
-			<p>Categories: <a class="hover:underline focus:underline active:underline active:text-gray-700" href={ baseUrl(`/category/${post.data.category.toLowerCase()}`) }>{ post.data.category }</a></p>			
+			<p>Category: <a class="hover:underline focus:underline active:underline active:text-gray-700" href={ baseUrl(`/category/${post.data.category.toLowerCase()}`) }>{ post.data.category }</a></p>			
 		</div>
 		
-		<Giscus
-			id="comments"
-			repo="ScratchAddons/website-v2"
-			repoId="MDEwOlJlcG9zaXRvcnkzNjU3NzE1MTQ="
-			category="Page comments"
-			categoryId="DIC_kwDOFc06-s4COGAf"
-			mapping="pathname"
-			strict="1"
-			reactionsEnabled="1"
-			emitMetadata="0"
-			inputPosition="top"
-			theme="light"
-			lang="en"
-			loading="lazy"
-		/>	
+		<!-- <div class="mb-1">
+			<Giscus
+				id="comments"
+				repo="Hans5958/blog"
+				repoId="MDEwOlJlcG9zaXRvcnkzNjU3NzE1MTQ="
+				category="Page comments"
+				categoryId="DIC_kwDOFc06-s4COGAf"
+				mapping="pathname"
+				strict="1"
+				reactionsEnabled="1"
+				emitMetadata="0"
+				inputPosition="top"
+				theme="light"
+				lang="en"
+				loading="lazy"
+				client:idle
+			/>	
+		</div> -->
 	</article>
 </Default>

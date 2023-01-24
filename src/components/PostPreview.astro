@@ -35,11 +35,11 @@ if (readingTimeMins === 1) readingTimeDisplay = "1 minute"
 else readingTimeDisplay = readingTimeMins + " minutes"
 ---
 
-<a href={baseUrl('/' + post.data.slug)} class="block p-4 border shadow rounded hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 active:shadow-lg active:bg-gray-100 transition mb-4">
+<a href={baseUrl('/' + post.data.slug)} class="block p-4 border shadow rounded hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 active:shadow-lg active:bg-gray-100 transition">
 
 	<article itemscope itemtype="http://schema.org/BlogPosting">
 
-		<header class="post-header mb-4">
+		<header class="post-header">
 			<h1 class="text-3xl font-bold mb-2" itemprop="name headline">{ post.data.title }</h1>
 			<p class="text-gray-500">
 				<Icon name="bi:calendar-fill" class="w-4 h-4 inline align-[-.125rem]" />
@@ -52,8 +52,8 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 			</p>
 		</header>
 
-		{ post.data.cover && post.data.cover.src && <img itemprop="image" class="mb-3" src={ baseUrl(coverImageAstro.toString()) } alt="{ post.data.cover.alt }" /> }
-		<div class="post-body" itemprop="articleBody" set:html={ excerpt }></div>
+		{ post.data.cover && post.data.cover.src && <img itemprop="image" class="mt-4" src={ baseUrl(coverImageAstro.toString()) } alt={ post.data.cover.alt } /> }
+		{ excerpt && <div class="mt-3" itemprop="articleBody" set:html={ excerpt }></div> }
 		
 	</article>
 

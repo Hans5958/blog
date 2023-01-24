@@ -53,7 +53,7 @@
 	a {
 		@apply text-blue-600;
 
-		&:hover {
+		&:hover, &:focus {
 			@apply text-blue-600 underline;
 		}
 

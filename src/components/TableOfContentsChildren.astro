@@ -19,7 +19,7 @@ let { headings } = Astro.props;
 <ul class="ml-6">
 	{ headings.map(heading => (<>
 		<li>
-			<a href={ "#" + heading.slug } class="text-gray-500 hover:underline active:underline active:text-gray-800">{ heading.text }</a>
+			<a href={ "#" + heading.slug } class="text-gray-500 hover:underline focus:underline active:text-gray-800">{ heading.text }</a>
 			{ heading.children.length > 0 && ( <>
 				<Astro.self headings={heading.children} />
 			</> ) }
