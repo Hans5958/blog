@@ -1,0 +1,17 @@
+---
+import Default from './Default.astro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+const titleDisplay = `${title} - Archive`
+---
+
+<Default title={ titleDisplay }>
+	<section class="container mx-auto max-w-[1140px] py-12">
+		<h1 class="text-5xl font-bold mb-8">Archive <span class="text-xl text-gray-500 font-normal">{ title }</span></h1>
+		<slot />
+	</section>
+</Default>

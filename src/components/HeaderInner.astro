@@ -16,7 +16,10 @@ import { Icon } from 'astro-icon';
 		</a>
 		<ul class="flex flex-row justify-end pr-2">
 			<li class="py-4 px-2 flex items-center">
-				<a href="#">Projects</a>
+				<a href="/">Home</a>
+			</li>
+			<li class="py-4 px-2 flex items-center">
+				<a href={ baseUrl('/archive') }>Archive</a>
 			</li>
 			<li class="py-4 px-2 flex items-center">
 				<a href={ baseUrl('/rss.xml') }><Icon name="simple-icons:rss" class="w-4 h-4" /></a>

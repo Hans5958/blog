@@ -142,4 +142,17 @@
 		}
 	}
 
+
+	ul, ol {
+		@apply pl-8
+	}
+
+	ul {
+		@apply list-disc
+	}
+
+	ol {
+		@apply list-decimal
+	}
+
 }

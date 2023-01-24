@@ -1,17 +1,17 @@
 ---
 title: Improving the Murder Drones Wiki screenshots
 date: 2023-01-22 20:52:00 +0700
-categories: Article
+category: Article
 tags: en project programming
 slug: improving-the-murder-drones-wiki-screenshots
-description: Once upon a time, I pay a visit to the Murder Drones Wiki on Fandom. Hasty screenshots of the player on YouTube, low resolution, cropped images, are some of the problems of these screenshots. In comparison, the first episode is rendered in 2560x1440. What if we somehow can take the frames of the original episode and update these images?
-excerpt: Once upon a time, I pay a visit to the Murder Drones Wiki on Fandom. What I look is a barren desert, persumably because it's been a while since the release of the first episode. What's also caught my eye is the screenshots, which has a room of improvement. Hasty screenshots of the player on YouTube, low resolution, cropped images, are some of the problems of these screenshots. In comparison, the first episode is rendered in `2560x1440`. What if we somehow can take the frames of the original episode and update these images?
+description: Hasty, watermarked YouTube screenshots, low resolution, cropped images, are some of the problems of these screenshots. What if we somehow can take the frames of the original video and update these images?
+excerpt: Hasty, watermarked YouTube screenshots, low resolution, cropped images, are some of the problems of these screenshots. What if we somehow can take the frames of the original video and update these images?
 cover: 
   src: /assets/improving-the-murder-drones-wiki-screenshots/cover.png
   alt: Side-by-side comparison of the initial image on the left (before) and the updated image on the right (after). A zoomed in portion of the comparison is indicated by a red square and shown on the top right of the image.
 ---
 
-Once upon a time, I pay a visit to the Murder Drones Wiki on Fandom. What I look is a barren desert, persumably because it's been a while since the release of the first episode. What's also caught my eye is the screenshots, which has a room of improvement. Hasty screenshots of the player on YouTube, low resolution, cropped images, are some of the problems of these screenshots. In comparison, the first episode is rendered in `2560x1440`. What if we somehow can take the frames of the original episode and update these images?
+Once upon a time, I pay a visit to the Murder Drones Wiki on Fandom. What I look is a barren desert, persumably because it's been a while since the release of the first episode. What's also caught my eye is the screenshots, which has a room of improvement. Hasty, watermarked screenshots of the player on YouTube, low resolution, cropped images, are some of the problems of these screenshots. In comparison, the first episode is rendered in `2560x1440`. What if we somehow can take the frames of the original episode and update these images?
 
 On the first image, I decided to do my own frame-finding and uploading, but then I found out that there is a lot of it. No way I'm going to do all of this by hand. That's where "programming" comes in to the rescue. So, here is what I did.
 

@@ -1,8 +1,8 @@
 ---
 import { Page } from 'astro';
 import { CollectionEntry, getCollection } from 'astro:content'
-import PostPreview from '../components/PostPreview.astro';
-import Default from './Default.astro';
+import Pagination from '../components/Pagination.astro';import PostPreviewGrid from '../components/PostPreviewGrid.astro';
+import ArchiveIndex from './ArchiveIndex.astro';
 
 interface Props {
 	page: Page<CollectionEntry<'posts'>>;
@@ -10,18 +10,9 @@ interface Props {
 }
 
 const { page, title } = Astro.props;
-
-
-const titleDisplay = `${title} - Archive`
 ---
 
-<Default title={ titleDisplay }>
-	<section class="container mx-auto max-w-[1140px] py-12">
-		<h2 class="text-5xl font-bold mb-8">Archive</h2>
-		<div>
-			{ page.data.map(post => (<>
-				<PostPreview post={ post }/>
-			</>)) }
-		</div>
-	</section>
-</Default>
+<ArchiveIndex title={ title }>
+	<PostPreviewGrid posts={page.data} />
+	<Pagination page={page} />
+</ArchiveIndex>

@@ -1,24 +1,20 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content'
-import PostPreview from '../components/PostPreview.astro';
-import Default from './Default.astro';
+import baseUrl from '../components/baseUrl.js';
+import PaginationDummy from '../components/PaginationDummy.astro';
+import PostPreviewGrid from '../components/PostPreviewGrid.astro';
+import ArchiveIndex from './ArchiveIndex.astro';
 
 interface Props {
 	data: CollectionEntry<'posts'>[];
 	title: string;
 }
 
-const { data, title } = Astro.props;
-const titleDisplay = `${title} - Archive`
+const { data, title } = Astro.props
+console.log(Astro.url)
 ---
 
-<Default title={ titleDisplay }>
-	<section class="container mx-auto max-w-[1140px] py-12">
-		<h2 class="text-5xl font-bold mb-8">Archive</h2>
-		<div>
-			{ data.map(post => (<>
-				<PostPreview post={ post }/>
-			</>)) }
-		</div>
-	</section>
-</Default>
+<ArchiveIndex title={ title }>
+	<PostPreviewGrid posts={ data.slice(0, 10) } />
+	<PaginationDummy lastPage={ Math.ceil(data.length / 10) } url={ baseUrl((Astro.url.pathname + '/page/2').replace("//", "/")) } />
+</ArchiveIndex>

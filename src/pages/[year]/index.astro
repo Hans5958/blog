@@ -4,7 +4,7 @@ import Archive from '../../layouts/Archive.astro'
 
 export async function getStaticPaths() {
 	const blogEntries = await getCollection('posts')
-	blogEntries.sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+	blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 	
 	const years: { [index: number]: CollectionEntry<'posts'>[] } = {}
 	

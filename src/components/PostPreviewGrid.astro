@@ -1,0 +1,17 @@
+---
+import { Page } from 'astro';
+import { CollectionEntry, getCollection } from 'astro:content'
+import PostPreview from './PostPreview.astro';
+
+interface Props {
+	posts: CollectionEntry<'posts'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="grid sm:gap-2 grid-cols-1 sm:grid-cols-2">
+	{ posts.map(post => (<>
+		<PostPreview post={ post }/>
+	</>)) }
+</div>

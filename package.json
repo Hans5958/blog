@@ -20,6 +20,7 @@
     "astro": "^2.0.0-beta.3",
     "astro-icon": "^0.8.0",
     "dayjs": "^1.11.7",
+    "reading-time": "^1.5.0",
     "remark-gfm": "^3.0.1",
     "remark-html": "^15.0.1",
     "remark-parse": "^10.0.1",

@@ -4,6 +4,8 @@ import TableOfContents from '../components/TableOfContents.astro';
 import Default from './Default.astro';
 import Giscus from '@giscus/vue'
 import baseUrl from '../components/baseUrl.js';
+import { Icon } from 'astro-icon';
+import readingTime from 'reading-time';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -14,17 +16,28 @@ const { post } = Astro.props;
 const { Content, headings } = await post.render();
 
 const coverImageAstro = post.data.cover?.src || ""
+
+const readingTimeMins = Math.round(readingTime(post.body).minutes)
+let readingTimeDisplay: string
+if (readingTimeMins === 1) readingTimeDisplay = "1 minute"
+else readingTimeDisplay = readingTimeMins + " minutes"
 ---
 
 <Default title={post.data.title} description={post.data.description}>
 	
 	<article class="container mx-auto md:max-w-[768px] py-6" itemscope itemtype="http://schema.org/BlogPosting">
+
 		<header class="post-header mb-4">
 			<h1 class="text-4xl font-bold mb-2" itemprop="name headline">{ post.data.title }</h1>
-			<p class="">
+			<p class="text-gray-500">
+				<Icon name="bi:calendar-fill" class="w-4 h-4 inline align-[-.125rem]" />
 				<time class="post-date-published" datetime={ post.data.date.toISOString() } itemprop="datePublished">
 					{ post.data.date.toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' }) }
 				</time>
+				–
+				<Icon name="bi:clock-fill" class="w-4 h-4 inline align-[-.125rem]" />
+				<span>{ readingTimeDisplay }</span>
+				
 			</p>
 		</header>
 
@@ -41,6 +54,18 @@ const coverImageAstro = post.data.cover?.src || ""
 		
 		<div class="post-body" itemprop="articleBody">
 			<Content />
+		</div>
+
+		<hr class="my-4" />
+
+		<div class="text-gray-500 mb-4">
+			<p>Tags: { post.data.tags.length === 0 ? <span class="italic">none</span> : <>
+				{ post.data.tags.map((tag, i) => <>
+					<a class="hover:underline focus:underline active:underline active:text-gray-700" href={ baseUrl(`/tag/${tag}`) }>{ tag }</a>
+					{ i !== post.data.tags.length - 1 && ', ' }
+				</>) } 
+			</> }</p>
+			<p>Categories: <a class="hover:underline focus:underline active:underline active:text-gray-700" href={ baseUrl(`/category/${post.data.category.toLowerCase()}`) }>{ post.data.category }</a></p>			
 		</div>
 		
 		<Giscus

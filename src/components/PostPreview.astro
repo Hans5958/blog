@@ -5,6 +5,8 @@ import remarkParse from 'remark-parse'
 import remarkGfm from 'remark-gfm'
 import remarkHtml from 'remark-html'
 import baseUrl from './baseUrl.js';
+import { Icon } from 'astro-icon';
+import readingTime from 'reading-time';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -27,23 +29,32 @@ if (post.data.excerpt) {
 	excerpt = excerptUnified.toString()
 }
 
+const readingTimeMins = Math.round(readingTime(post.body).minutes)
+let readingTimeDisplay: string
+if (readingTimeMins === 1) readingTimeDisplay = "1 minute"
+else readingTimeDisplay = readingTimeMins + " minutes"
 ---
 
-<a href={baseUrl('/' + post.data.slug)} class="block p-4 border shadow rounded hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 active:shadow-lg active:bg-gray-100 transition">
+<a href={baseUrl('/' + post.data.slug)} class="block p-4 border shadow rounded hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 active:shadow-lg active:bg-gray-100 transition mb-4">
+
 	<article itemscope itemtype="http://schema.org/BlogPosting">
 
 		<header class="post-header mb-4">
-			<h1 class="text-4xl font-bold mb-2" itemprop="name headline">{ post.data.title }</h1>
-			<p class="">
+			<h1 class="text-3xl font-bold mb-2" itemprop="name headline">{ post.data.title }</h1>
+			<p class="text-gray-500">
+				<Icon name="bi:calendar-fill" class="w-4 h-4 inline align-[-.125rem]" />
 				<time class="post-date-published" datetime={ post.data.date.toISOString() } itemprop="datePublished">
 					{ post.data.date.toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' }) }
 				</time>
+				–
+				<Icon name="bi:clock-fill" class="w-4 h-4 inline align-[-.125rem]" />
+				<span>{ readingTimeDisplay }</span>	
 			</p>
 		</header>
-		{ post.data.cover && (<>
-			<img itemprop="image" class="mb-3 w-40" src={ baseUrl(coverImageAstro.toString()) } alt="{ post.data.cover.alt }" />
-		</>) }
-		<div class="post-body" itemprop="articleBody" set:html={ excerpt }>	</div>
+
+		{ post.data.cover && post.data.cover.src && <img itemprop="image" class="mb-3" src={ baseUrl(coverImageAstro.toString()) } alt="{ post.data.cover.alt }" /> }
+		<div class="post-body" itemprop="articleBody" set:html={ excerpt }></div>
 		
 	</article>
+
 </a>

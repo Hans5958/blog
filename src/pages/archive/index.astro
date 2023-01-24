@@ -1,0 +1,94 @@
+---
+import { Icon } from 'astro-icon'
+import { CollectionEntry, getCollection } from 'astro:content'
+import baseUrl from '../../components/baseUrl.js'
+import Pagination from '../../components/Pagination.astro'
+import PaginationDummy from '../../components/PaginationDummy.astro'
+import PostPreview from '../../components/PostPreview.astro'
+import PostPreviewGrid from '../../components/PostPreviewGrid.astro'
+import ArchiveIndex from '../../layouts/ArchiveIndex.astro'
+
+const blogEntries = await getCollection('posts')
+
+const tags: { [index: string]: CollectionEntry<'posts'>[] } = {}
+const categories: { [index: string]: CollectionEntry<'posts'>[] } = {}
+const years: { [index: number]: CollectionEntry<'posts'>[] } = {}
+		
+blogEntries.forEach(post => {
+	const postTags = post.data.tags
+	postTags.forEach(tag => {
+		if (!tags[tag]) {
+			tags[tag] = []
+		}
+		tags[tag].push(post)
+	})
+
+	const postCategory = post.data.category 
+	if (!categories[postCategory]) {
+		categories[postCategory] = []
+	}
+	categories[postCategory].push(post)
+
+	const postYear = post.data.date.getFullYear()
+	if (!years[postYear]) {
+		years[postYear] = []
+	}
+	years[postYear].push(post)
+})
+
+blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+---
+
+<ArchiveIndex title="Index">
+
+	<section class="mb-8">
+		<h2 class="text-2xl font-semibold mb-4">Categories</h2>
+
+		<div class="flex flex-wrap">
+			{ Object.keys(categories).map(category => (<>
+				<a href={ baseUrl('/category/' + category.toLowerCase()) } class="flex flex-row px-4 py-2 border shadow rounded hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 active:shadow-lg active:bg-gray-100 transition mr-2 mb-2" >
+					<Icon name="octicon:file-directory-16" class="w-6 h-6 mr-2"></Icon>
+					<div class="-mt-[.1rem] align-middle text-lg font-semibold mr-2">{ category }</div>
+					<div class="mt-[.2rem] text-sm text-gray-400">{ categories[category].length } posts</div>
+				</a>
+			</>)) }	
+		</div>
+	
+	</section>
+
+	<section class="mb-8">
+		<h2 class="text-2xl font-semibold mb-4">Tags</h2>
+
+		<div class="flex flex-wrap">
+			{ Object.keys(tags).map(tag => (<>
+				<a href={ baseUrl('/tag/' + tag) } class="flex flex-row px-4 py-2 border shadow rounded hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 active:shadow-lg active:bg-gray-100 transition mr-2 mb-2" >
+					<Icon name="octicon:hash-16" class="w-6 h-6 mr-2"></Icon>
+					<div class="-mt-[.2rem] align-middle text-lg font-semibold mr-2">{ tag }</div>
+					<div class="mt-[.1rem] text-sm text-gray-400">{ tags[tag].length } posts</div>
+				</a>
+			</>)) }	
+		</div>
+	</section>
+
+	<section class="mb-8">
+		<h2 class="text-2xl font-semibold mb-4">Years</h2>
+
+		<div class="flex flex-wrap">
+			{ Object.keys(years).map(year => (<>
+				<a href={ baseUrl('/' + year) } class="flex flex-row px-4 py-2 border shadow rounded hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 active:shadow-lg active:bg-gray-100 transition mr-2 mb-2" >
+					<Icon name="bi:calendar-fill" class="w-6 h-6 mr-2"></Icon>
+					<div class="-mt-[.2rem] align-middle text-lg font-semibold mr-2">{ year }</div>
+					<div class="mt-[.1rem] text-sm text-gray-400">{ years[year].length } posts</div>
+				</a>
+			</>)) }	
+		</div>
+	</section>
+
+	<section>
+		<h2 class="text-2xl font-semibold mb-4">Latest</h2>
+
+		<PostPreviewGrid posts={blogEntries.slice(0, 10)} />
+
+		<PaginationDummy lastPage={ Math.ceil(blogEntries.length / 10) } url={ baseUrl((Astro.url.pathname + '/page/2').replace("//", "/")) } />
+	</section>
+</ArchiveIndex>
