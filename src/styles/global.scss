@@ -54,7 +54,7 @@
 		@apply text-blue-600;
 
 		&:hover, &:focus {
-			@apply text-blue-600 underline;
+			@apply underline;
 		}
 
 		&:active {

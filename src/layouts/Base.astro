@@ -1,13 +1,8 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
+import { BaseProps } from "../config.js";
 
-export interface Props {
-	title?: string;
-	description?: string;
-	coverSrc?: string;
-	coverAlt?: string;
-	noAnalytics?: boolean;
-}
+export interface Props extends BaseProps, astroHTML.JSX.Element {}
 
 const { title, description, coverSrc, coverAlt, noAnalytics, ...props } = Astro.props;
 ---

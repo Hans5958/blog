@@ -7,10 +7,12 @@ export async function getStaticPaths() {
 	const blogEntries = await getCollection('posts')
 
 	return blogEntries.flatMap(post => {
-		return post.data.redirect_from?.map(url => ({
-			params: { redirect: url }, 
-			props: { url: baseUrl('/' + post.slug) },
-		}))
+		return post.data.redirect_from?.map(url => {
+			return {
+				params: { redirect: url.replace(/^\//, '') }, 
+				props: { url: baseUrl('/' + post.slug) },
+			}
+		})
 	}).filter(el => el)
 }
 

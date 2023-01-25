@@ -1,12 +1,15 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Base from "./Base.astro";
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+import Base from "./Base.astro"
+import { BaseProps } from "../config.js"
 
-let props = Astro.props;
+export interface Props extends BaseProps, astroHTML.JSX.Element {}
+
+let props = Astro.props
 ---
 
-<Base { ...props }>
+<Base { ...props } class="h-screen flex flex-col justify-between">
 	<Header />
 	<main id="content" class="flex-grow">
 		<slot />
