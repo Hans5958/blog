@@ -9,7 +9,9 @@ redirect_from:
   - /2019/06/25/scavenger-hunt-writeups-1
 ---
 
-Hey, I decided to start a series of post. I call this series "Scavenger Hunt Writeups". I do this because I’m bored and I like scavenger hunts. This includes those mini-ARG that hosted by some random Discord server. I will do this in a relaxing tone, not as technical as when someone found a critical zero-day exploit. This is the first post, hope you like it. This scavenger hunt is hosted by ChillZone ([discord.gg/fun](http://discord.gg/fun)), a populated server which I’ve never talked to. As a popular server, they like events, this is one of them. This one is quite easy, surprisingly. So, let’s get into it.
+Hey, I decided to start a series of post. I call this series "Scavenger Hunt Writeups". I do this because I’m bored and I like scavenger hunts. This includes those mini-ARG that hosted by some random Discord server. I will do this in a relaxing tone, not as technical as when someone found a critical zero-day exploit. This is the first post, hope you like it. 
+
+This scavenger hunt is hosted by ChillZone ([discord.gg/fun](http://discord.gg/fun)), a populated server which I’ve never talked to. As a popular server, they like events, this is one of them. This one is quite easy, surprisingly. So, let’s get into it.
 
 ----
 
@@ -35,7 +37,13 @@ This one is also easy. Just google “pi” and you get your answer. The first �
 
 ![scavenger-hunt-writeups-1-04.png](/blog/assets/scavenger-hunt-writeups-1/04.png)
 
-This one is also easy. The numbers are the squared value of the index. So, the first number (n = 1) is 12 = 1, the second number (n = 2) is 22 = 4, the third number (n = 3) is 32 = 9, and so on. So, for the n-th number, the value is n2. For some reason, the creator of this stage has a different approach. *“The difference between 1 and 4 is 3, the difference between 4 and 9 is 5, the difference between 9 and 16 is 7. The number increases by 2 and is added onto the last number.”* But, anyway. We got the same answer. The sixth number is 62 = 36, so the answer is **36**. (.36)
+This one is also easy. The numbers are the squared value of the index. So, the first number (n = 1) is 12 = 1, the second number (n = 2) is 22 = 4, the third number (n = 3) is 32 = 9, and so on. So, for the n-th number, the value is n2. 
+
+For some reason, the creator of this stage has a different approach. 
+
+> The difference between 1 and 4 is 3, the difference between 4 and 9 is 5, the difference between 9 and 16 is 7. The number increases by 2 and is added onto the last number.
+
+But, anyway. We got the same answer. The sixth number is 62 = 36, so the answer is **36**. (.36)
 
 ----
 
@@ -55,11 +63,13 @@ So, the answer is **friend**. (.friend)
 
 ![scavenger-hunt-writeups-1-07.png](/blog/assets/scavenger-hunt-writeups-1/07.png)
 
-In this one, there are multiple polygons. But, you can see that the green polygon always inside the red polygon and the red polygon is always inside the blue polygon. So, the order of the color is green, red, and blue. There are letters scattered on the polygons. The letters can be categorized by the colors. Reading the letters from left to right and top to bottom results in this.
+In this one, there are multiple polygons. But, you can see that the green polygon always inside the red polygon and the red polygon is always inside the blue polygon. So, the order of the color is green, red, and blue. 
 
-Green: CODE
-Red: IS
-Blue: 359
+There are letters scattered on the polygons. The letters can be categorized by the colors. Reading the letters from left to right and top to bottom results in this.
+
+- Green: CODE
+- Red: IS
+- Blue: 359
 
 As you can see, it reads “CODE IS 359”. So, the answer is **359**. (.359)
 
@@ -112,7 +122,9 @@ The most likely words that are used is “don’t”, “here”, and “talk”
 
 ![scavenger-hunt-writeups-1-13.png](/blog/assets/scavenger-hunt-writeups-1/13.png)
 
-Here’s the YouTube link. [https://youtube.com/watch?v=Ba7HpvKJjF0](https://youtube.com/watch?v=Ba7HpvKJjF0) This one is easy. The video only contains an audio track. The audio is played backward. Play the audio backward and you can hear “ModSloth likes cheese”. So, the answer is **ModSloth likes cheese**. (.modslothlikescheese)
+Here’s the YouTube link. [https://youtube.com/watch?v=Ba7HpvKJjF0](https://youtube.com/watch?v=Ba7HpvKJjF0) 
+
+This one is easy. The video only contains an audio track. The audio is played backward. Play the audio backward and you can hear “ModSloth likes cheese”. So, the answer is **ModSloth likes cheese**. (.modslothlikescheese)
 
 ----
 
@@ -132,7 +144,9 @@ The search results refer to The Thing, a sci-fi movie from 1982. So, the answer 
 
 ![scavenger-hunt-writeups-1-16.png](/blog/assets/scavenger-hunt-writeups-1/16.png)
 
-This one is actually easy, although I actually overlooked the question. There is a confession channel where we can submit our confessions anonymously. So, the question told us to find his confession. I actually skimmed the whole channel to find the answer. Also, I got a clue that the answer has 4 words, but it turns out that the answer has 4 characters. 
+This one is actually easy, although I actually overlooked the question. 
+
+There is a confession channel where we can submit our confessions anonymously. So, the question told us to find his confession. I actually skimmed the whole channel to find the answer. Also, I got a clue that the answer has 4 words, but it turns out that the answer has 4 characters. 
 
 ![scavenger-hunt-writeups-1-17.png](/blog/assets/scavenger-hunt-writeups-1/17.png) 
 
@@ -156,7 +170,9 @@ The answer is **Lazarus**. (.lazarus)
 
 ![scavenger-hunt-writeups-1-20.png](/blog/assets/scavenger-hunt-writeups-1/20.png) 
 
-Alright, this is the hardest question among all the stages on the scavenger hunt. Even the final stage is easier than this one. Lots of people cheated, though, but I figured it out by myself. The picture actually resembles the seven segment display that you see in clocks or such. To solve it, just invert the segments, so the active segment becomes inactive and vice versa. 
+Alright, this is the hardest question among all the stages on the scavenger hunt. Even the final stage is easier than this one. Lots of people cheated, though, but I figured it out by myself. 
+
+The picture actually resembles the seven segment display that you see in clocks or such. To solve it, just invert the segments, so the active segment becomes inactive and vice versa. 
 
 ![scavenger-hunt-writeups-1-21.png](/blog/assets/scavenger-hunt-writeups-1/21.png) 
 
