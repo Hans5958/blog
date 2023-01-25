@@ -15,15 +15,13 @@ interface Props {
 const { post } = Astro.props;
 const { Content, headings } = await post.render();
 
-const coverImageAstro = post.data.cover?.src || ""
-
 const readingTimeMins = Math.round(readingTime(post.body).minutes)
 let readingTimeDisplay: string
 if (readingTimeMins === 1) readingTimeDisplay = "1 minute"
 else readingTimeDisplay = readingTimeMins + " minutes"
 ---
 
-<Default title={post.data.title} description={post.data.description}>
+<Default title={post.data.title} description={post.data.description} coverSrc={ baseUrl(post.data.cover?.src || "") } coverAlt={ post.data.cover?.alt }>
 	
 	<article class="container mx-auto md:max-w-[768px] py-6" itemscope itemtype="http://schema.org/BlogPosting">
 
@@ -42,7 +40,7 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 		</header>
 
 		{ post.data.cover && (<>
-			<img itemprop="image" class="mb-3" src={ baseUrl(coverImageAstro.toString()) } alt={ post.data.cover.alt } />
+			<img itemprop="image" class="mb-3" src={ baseUrl(post.data.cover?.src || "") } alt={ post.data.cover.alt } />
 		</>) }
 
 		<div class="border mb-3 p-4 text-gray-500">
