@@ -1,6 +1,6 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content'
-import baseUrl from '../components/baseUrl.js';
+import relativeUrl from '../components/urlHelper.js';
 import PaginationDummy from '../components/PaginationDummy.astro';
 import PostPreviewGrid from '../components/PostPreviewGrid.astro';
 import ArchiveIndex from './ArchiveIndex.astro';
@@ -16,5 +16,5 @@ const { data, title } = Astro.props
 
 <ArchiveIndex title={ title }>
 	<PostPreviewGrid posts={ data.slice(0, 10) } />
-	<PaginationDummy lastPage={ Math.ceil(data.length / 10) } url={ baseUrl((Astro.url.pathname + '/page/2').replace("//", "/")) } />
+	<PaginationDummy lastPage={ Math.ceil(data.length / 10) } url={ relativeUrl((Astro.url.pathname + '/page/2').replace("//", "/")) } />
 </ArchiveIndex>

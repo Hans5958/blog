@@ -1,9 +1,10 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import TableOfContents from '../components/TableOfContents.astro';
+import TableOfContents2 from '../components/TableOfContents2.astro';
 import Default from './Default.astro';
 import Giscus from '@giscus/vue'
-import baseUrl from '../components/baseUrl.js';
+import relativeUrl from '../components/urlHelper.js';
 import { Icon } from 'astro-icon';
 import readingTime from 'reading-time';
 
@@ -21,15 +22,15 @@ if (readingTimeMins === 1) readingTimeDisplay = "1 minute"
 else readingTimeDisplay = readingTimeMins + " minutes"
 ---
 
-<Default title={post.data.title} description={post.data.description} coverSrc={ baseUrl(post.data.cover?.src || "") } coverAlt={ post.data.cover?.alt }>
+<Default title={post.data.title} description={post.data.description} coverSrc={ relativeUrl(post.data.cover?.src || "") } coverAlt={ post.data.cover?.alt }>
 	
-	<article class="container mx-auto md:max-w-[768px] py-6" itemscope itemtype="http://schema.org/BlogPosting">
+	<article class="container mx-auto max-w-[1140px] py-6 md:grid md:grid-cols-12 gap-x-6 grid-rows-[min-content_min-content_1fr]" itemscope itemtype="http://schema.org/BlogPosting">
 
-		<header class="post-header mb-4">
+		<header class="post-header mb-4 grid col-span-12">
 			<h1 class="text-4xl font-bold mb-2" itemprop="name headline">{ post.data.title }</h1>
 			<p class="text-gray-500">
 				<Icon name="bi:calendar-fill" class="w-4 h-4 inline align-[-.125rem]" />
-				<time class="post-date-published" datetime={ post.data.date.toISOString() } itemprop="datePublished">
+				<time datetime={ post.data.date.toISOString() } itemprop="datePublished">
 					{ post.data.date.toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' }) }
 				</time>
 				–
@@ -39,50 +40,67 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 			</p>
 		</header>
 
-		{ post.data.cover && (<>
-			<img itemprop="image" class="mb-3" src={ baseUrl(post.data.cover?.src || "") } alt={ post.data.cover.alt } />
-		</>) }
-
-		<div class="border mb-3 p-4 text-gray-500">
-			<h3 class="mb-2 pb-2 border-b">Contents</h3>
-			<div class="-ml-6">
+		<div class="text-gray-500 hidden md:block md:col-span-3 md:text-sm md:col-start-10 md:row-start-3">
+			<div class="md:sticky md:top-4">
+				<h3 class="mb-2 pb-2 border-b">Contents</h3>
 				<TableOfContents headings={ headings } />
 			</div>
 		</div>
-		
-		<div class="post-body" itemprop="articleBody">
-			<Content />
+
+		<div class="md:col-span-9 md:row-span-2 md:col-start-1 md:row-start-2">
+			<div>
+				{ post.data.cover && (<>
+					<img itemprop="image" class="mb-3" src={ relativeUrl(post.data.cover?.src || "") } alt={ post.data.cover.alt } />
+				</>) }
+			</div>
+			
+			<div class="md:hidden text-gray-500 mb-4 p-4 border rounded">
+				<h3 class="mb-2 pb-2 border-b">Contents</h3>
+				<TableOfContents2 headings={ headings } />
+			</div>
+
+			<div class="markdown" itemprop="articleBody">
+				{ post.data.cover && (<>
+					<img itemprop="image" class="mb-3 hidden" src={ relativeUrl(post.data.cover?.src || "") } alt={ post.data.cover.alt } />
+				</>) }
+				<Content />
+			</div>
 		</div>
 
-		<hr class="my-4" />
-
-		<div class="text-gray-500 mb-4">
-			<p>Tags: { post.data.tags.length === 0 ? <span class="italic">none</span> : <>
+		<div class="text-gray-500 mb-4 md:col-span-3 md:text-sm md:col-start-10 md:row-start-2 mt-4 pt-4 border-t md:mt-0 md:pt-0 md:border-none">
+			<p class="mb-1">Tags: { post.data.tags.length === 0 ? <span class="italic">none</span> : <>
 				{ post.data.tags.map((tag, i) => <>
-					<a class="hover:underline focus:underline active:underline active:text-gray-700" href={ baseUrl(`/tag/${tag}`) }>{ tag }</a>
+					<a class="hover:underline focus:underline active:underline active:text-gray-700" href={ relativeUrl(`/tag/${tag}`) }>{ tag }</a>
 					{ i !== post.data.tags.length - 1 && ', ' }
 				</>) } 
 			</> }</p>
-			<p>Category: <a class="hover:underline focus:underline active:underline active:text-gray-700" href={ baseUrl(`/category/${post.data.category.toLowerCase()}`) }>{ post.data.category }</a></p>			
+			<p>Category: <a class="hover:underline focus:underline active:underline active:text-gray-700" href={ relativeUrl(`/category/${post.data.category.toLowerCase()}`) }>{ post.data.category }</a></p>			
 		</div>
-		
-		<div class="mb-1">
-			<Giscus
-				id="comments"
-				repo="Hans5958/blog"
-				repoId="R_kgDOI1LFVw="
-				category="Page comments"
-				categoryId="DIC_kwDOI1LFV84CTx32"
-				mapping="pathname"
-				strict="1"
-				reactionsEnabled="1"
-				emitMetadata="0"
-				inputPosition="top"
-				theme="light"
-				lang="en"
-				loading="lazy"
-				client:idle
-			/>	
+
+		<div class="md:col-span-9 md:row-start-4 mt-4 md:pt-4 md:border-t">
+			<div>
+				<Giscus
+					id="comments"
+					repo="Hans5958/blog"
+					repoId="R_kgDOI1LFVw="
+					category="Page comments"
+					categoryId="DIC_kwDOI1LFV84CTx32"
+					mapping="pathname"
+					strict="1"
+					reactionsEnabled="1"
+					emitMetadata="0"
+					inputPosition="top"
+					theme="light"
+					lang="en"
+					loading="lazy"
+					client:idle
+				/>	
+			</div>
 		</div>
+
+
+	</article>
+
+	<article itemscope itemtype="http://schema.org/BlogPosting">
 	</article>
 </Default>

@@ -1,0 +1,24 @@
+---
+import relativeUrl from '../components/urlHelper.js';
+import HeaderInner from '../components/HeaderInner.astro';
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="404" description="It seems I can't find the page that you're looking for or it's just doesn't exist." class="bg-gradient-to-br from-gray-800 to-slate-600 text-white w-screen h-screen flex flex-col">
+	<header class="w-100">
+		<HeaderInner />
+	</header>
+	<div class="h-full flex flex-col justify-center w-full max-w-[1140px] mx-auto px-4 py-12">
+		<h1 class="mb-2">
+			<span class="text-9xl font-bold">404</span>
+			<span class="ml-2 text-2xl">Page not found</span>
+		</h1>
+
+		<p class="mb-4">It seems I can't find the page that you're looking for or it's just doesn't exist.</p>
+
+		<div class="mt-4">
+			<a href="javascript:window.history.back()" class="bg-white text-black focus:ring-2 ring-offset-2 ring-sky-500 hover:bg-gray-300 active:bg-gray-400 p-3 mr-1 rounded font-semibold" role="button">Go back</a>
+			<a href={ relativeUrl('/') } class="bg-white text-black focus:ring-2 ring-offset-2 ring-sky-500 hover:bg-gray-300 active:bg-gray-400 p-3 rounded font-semibold" role="button">Homepage</a>
+		</div>
+	</div>
+</Base>

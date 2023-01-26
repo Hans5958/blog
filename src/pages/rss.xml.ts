@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import baseUrl from '../components/baseUrl.js';
+import relativeUrl from '../components/urlHelper.js';
 import { SITE_TITLE } from '../config.js';
 
 export async function get(context) {
@@ -13,7 +13,7 @@ export async function get(context) {
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.description,
-      link: baseUrl('/' + post.slug),
+      link: relativeUrl('/' + post.slug),
     })),
   });
 }

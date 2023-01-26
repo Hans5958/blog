@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
-import baseUrl from '../components/baseUrl.js'
+import relativeUrl from '../components/urlHelper.js'
 import Redirect from '../layouts/Redirect.astro'
 
 export async function getStaticPaths() {
@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 		return post.data.redirect_from?.map(url => {
 			return {
 				params: { redirect: url.replace(/^\//, '') }, 
-				props: { url: baseUrl('/' + post.slug) },
+				props: { url: relativeUrl('/' + post.slug) },
 			}
 		})
 	}).filter(el => el)

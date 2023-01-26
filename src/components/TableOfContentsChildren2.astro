@@ -27,20 +27,20 @@ let { headings } = Astro.props;
 	</>)) }	
 </ul>
 
-<style>
+<style lang="scss">
 
 	ul {
 		@apply ml-6
 	}
 
-	@media screen(md) {
-		a {
-			@apply block -mx-2 px-2 py-1 mt-0.5 rounded transition
-		}
+	li {
+	}
 
-		a.active,
-		a:hover {
-			@apply bg-gray-100
+	a {
+		@apply block mt-0.5 rounded transition;
+
+		&:hover {
+			@apply underline
 		}
 	}
 

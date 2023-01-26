@@ -1,6 +1,6 @@
 ---
 import { MarkdownHeading } from 'astro';
-import TableOfContentsChildren from './TableOfContentsChildren.astro';
+import TableOfContentsChildren2 from './TableOfContentsChildren2.astro';
 
 export interface Props {
 	headings: MarkdownHeading[];
@@ -40,19 +40,6 @@ headingsRaw.forEach(heading => {
 })
 ---
 
-<div id="toc" class="-ml-6">
-	<TableOfContentsChildren headings={headings} />
+<div class="-ml-6">
+	<TableOfContentsChildren2 headings={headings} />
 </div>
-
-<script>
-import scrollSpy from 'simple-scrollspy'
-
-const el = document.querySelector('#toc')
-console.log(el)
-
-scrollSpy(el, {
-  sectionClass: 'main h2, main h3, main h4, main h5, main h6',
-  menuActiveTarget: '#toc a',
-  offset: -50,
-})
-</script>

@@ -6,7 +6,7 @@ import Icon from 'astro-icon'
 import { getCollection } from 'astro:content'
 import PostPreviewGrid from '../components/PostPreviewGrid.astro'
 import PaginationDummy from '../components/PaginationDummy.astro'
-import baseUrl from '../components/baseUrl.js'
+import relativeUrl from '../components/urlHelper.js'
 
 const blogEntries = await getCollection('posts')
 blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 10)
@@ -33,7 +33,7 @@ blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(
 <section class="container mx-auto max-w-[1140px] py-12">
 	<h2 class="text-5xl font-bold mb-8">Latest</h2>
 	<PostPreviewGrid posts={blogEntries} />
-	<PaginationDummy lastPage={ Math.ceil(blogEntries.length / 10) } url={ baseUrl((Astro.url.pathname + '/page/2').replace("//", "/")) } />
+	<PaginationDummy lastPage={ Math.ceil(blogEntries.length / 10) } url={ relativeUrl((Astro.url.pathname + '/page/2').replace("//", "/")) } />
 </section>
 
 </Default>
