@@ -8,10 +8,10 @@ import { Image } from '@astrojs/image/components';
 
 <div class="mx-auto max-w-[1140px]">
 	<nav class="flex flex-row justify-between items-center">
-		<a href={ relativeUrl('/') } class="text-xl p-4 flex flex-row font-bold">
+		<a href={ relativeUrl('/') } class="text-xl p-4 flex flex-row font-bold" aria-label={ SITE_TITLE }>
 			<Image class="rounded-sm w-8 h-8 mr-2" src="https://avatars3.githubusercontent.com/u/11584103" width={ 64 } height={ 64 } format="webp" alt="Avatar" />
-			<Icon name="bi:journal-text" class="w-8 h-8 mr-2" aria-label="Blog" />
-			<p class="">
+			<Icon name="bi:journal-text" class="w-8 h-8 mr-2" aria-label="Blog" />	
+			<p class="hidden sm:block">
 				{ SITE_TITLE }
 			</p>
 		</a>
