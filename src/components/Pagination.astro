@@ -12,13 +12,13 @@ const { page } = Astro.props;
 
 ---
 
-<nav class="flex border rounded flex-shrink py-6">
+<nav class="flex border rounded flex-shrink py-1 mt-2">
 	{ page.url.prev && <div>
 		<a href={ relativeUrl(page.url.prev) } class="py-1 px-2 flex justify-center items-center">
 			<Icon name="bi:arrow-left" class="mr-2 w-4 h-4" /> Page { page.currentPage - 1 }
 		</a>
 	</div> }
-	<div class="flex grow justify-center items-center py-6 mx-2">
+	<div class="flex grow justify-center items-center px-2">
 		Page { page.currentPage } of { page.lastPage }
 	</div>
 	{ page.url.next && <div>

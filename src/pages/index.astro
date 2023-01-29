@@ -32,8 +32,8 @@ blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(
 
 <section class="container mx-auto max-w-[1140px] py-12">
 	<h2 class="text-5xl font-bold mb-8">Latest</h2>
-	<PostPreviewGrid posts={blogEntries} />
-	<PaginationDummy lastPage={ Math.ceil(blogEntries.length / 10) } url={ relativeUrl((Astro.url.pathname + '/page/2').replace("//", "/")) } />
+	<PostPreviewGrid posts={blogEntries.slice(0, 10)} />
+	<PaginationDummy lastPage={ Math.ceil(blogEntries.length / 10) } url='/archive/page/2' />
 </section>
 
 </Default>

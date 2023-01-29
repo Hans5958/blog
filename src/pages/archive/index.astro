@@ -89,6 +89,6 @@ blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 
 		<PostPreviewGrid posts={blogEntries.slice(0, 10)} />
 
-		<PaginationDummy lastPage={ Math.ceil(blogEntries.length / 10) } url={ relativeUrl((Astro.url.pathname + '/page/2').replace("//", "/")) } />
+		<PaginationDummy lastPage={ Math.ceil(blogEntries.length / 10) } url={ Astro.url.pathname.replace('/blog', '') + '/page/2' } />
 	</section>
 </ArchiveIndex>
