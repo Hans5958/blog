@@ -16,7 +16,7 @@
     "@astrojs/mdx": "^1.0.0-beta.2",
     "@astrojs/rss": "^2.1.0",
     "@astrojs/sitemap": "^1.0.0",
-    "@astrojs/tailwind": "^3.0.0",
+    "@astrojs/tailwind": "^3.0.1",
     "@astrojs/vue": "^2.0.0",
     "@giscus/vue": "^2.2.6",
     "astro": "^2.0.1",
