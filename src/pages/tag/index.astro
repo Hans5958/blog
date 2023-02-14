@@ -22,7 +22,7 @@ blogEntries.forEach(post => {
 <ArchiveIndex title="Tag">
 	<div class="flex flex-wrap">
 		{ Object.keys(tags).map(tag => (<>
-			<a href={ relativeUrl('/tag/' + tag) } class="flex flex-row px-4 py-2 border shadow rounded hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 active:shadow-lg active:bg-gray-100 transition mr-2 mb-2" >
+			<a href={ relativeUrl('/tag/' + tag) } class="flex flex-row px-4 py-2 rounded border border-gray-300 hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-200 focus:ring focus:ring-blue-500 focus:outline-none active:outline-none mr-2 mb-2" >
 				<Icon name="octicon:hash-16" class="w-6 h-6 mr-2"></Icon>
 				<div class="-mt-[.2rem] align-middle text-lg font-semibold mr-2">{ tag }</div>
 				<div class="mt-[.1rem] text-sm text-gray-500">{ tags[tag].length } posts</div>
