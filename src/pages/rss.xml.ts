@@ -9,7 +9,7 @@ export async function get(context) {
     title: SITE_TITLE,
     description: "Collection and articles and texts of Hans5958.",
     site: context.site,
-    items: blog.map((post) => ({
+    items: blog.sort((a, b) => Number(b.data.date) - Number(a.data.date)).map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.description,
