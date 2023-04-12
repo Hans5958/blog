@@ -7,6 +7,7 @@ import Giscus from '@giscus/vue'
 import relativeUrl from '../components/urlHelper.js';
 import { Icon } from 'astro-icon';
 import readingTime from 'reading-time';
+import { Image } from "astro:assets";
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -50,7 +51,7 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 		<div class="md:col-span-9 md:row-span-2 md:col-start-1 md:row-start-2">
 			<div>
 				{ post.data.cover && (<>
-					<img itemprop="image" class="mb-3" src={ relativeUrl(post.data.cover?.src || "") } alt={ post.data.cover.alt } />
+					<Image itemprop="image" class="mb-3" src={ post.data.cover } alt={ post.data.coverAlt } />
 				</>) }
 			</div>
 			
@@ -61,7 +62,7 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 
 			<div class="markdown" itemprop="articleBody">
 				{ post.data.cover && (<>
-					<img itemprop="image" class="mb-3 hidden" src={ relativeUrl(post.data.cover?.src || "") } alt={ post.data.cover.alt } />
+					<Image itemprop="image" class="mb-3 hidden" src={ post.data.cover } alt={ post.data.coverAlt } />
 				</>) }
 				<Content />
 			</div>

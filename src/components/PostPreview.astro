@@ -7,6 +7,7 @@ import remarkHtml from 'remark-html'
 import relativeUrl from './urlHelper.js';
 import { Icon } from 'astro-icon';
 import readingTime from 'reading-time';
+import { Image } from "astro:assets";
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -52,7 +53,7 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 			</p>
 		</header>
 
-		{ post.data.cover && post.data.cover.src && <img itemprop="image" class="mt-4" src={ relativeUrl(coverImageAstro.toString()) } alt={ post.data.cover.alt } /> }
+		{ post.data.cover && <Image itemprop="image" class="mt-4" src={ post.data.cover } alt={ post.data.coverAlt } /> }
 		{ excerpt && <div class="mt-3" itemprop="articleBody" set:html={ excerpt }></div> }
 		
 	</article>
