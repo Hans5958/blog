@@ -1,6 +1,7 @@
 ---
 title: Improving the Murder Drones Wiki screenshots
 date: 2023-01-22 20:52:00 +0700
+date_mod: 2023-04-12 20:52 +0700
 category: Article
 tags: en project programming
 slug: improving-the-murder-drones-wiki-screenshots
@@ -25,9 +26,9 @@ The source code of this project can be seen on https://gitlab.com/Hans5958-MWS/f
 
 I want to get the original images of each file, and as far as I learned about MediaWiki, one way to do it is to access the pages on it, which inside them has the original link. But unlike something like Wikipedia or Wikimedia Commons, you can't access these pages anonymously, so I have to do it in a roundabout way.
 
-To get the list of the files, I need to use [AutoWikiBrowser](https://en.wikipedia.org/wiki/Wikipedia:AutoWikiBrowser), which gives me 965 files at that time. My code saved it on [`files md.txt`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/main/files%20md.txt). After that, I use Python to scrape the pages and get the URLs to the original files, after supplying my Fandom cookie in it. [Beautiful Soup](https://pypi.org/project/beautifulsoup4/) is used here, a library for all things web scraping.
+To get the list of the files, I need to use [AutoWikiBrowser](https://en.wikipedia.org/wiki/Wikipedia:AutoWikiBrowser), which gives me 965 files at that time. My code saved it on [`files md.txt`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/blog/files%20md.txt). After that, I use Python to scrape the pages and get the URLs to the original files, after supplying my Fandom cookie in it. [Beautiful Soup](https://pypi.org/project/beautifulsoup4/) is used here, a library for all things web scraping.
 
-The relevant code can be seen on `scraper.py` (or [`scraper.py.example`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/main/scraper.py.example)). It saves the target images to `files/` folder.
+The relevant code can be seen on `scraper.py` (or [`scraper.py.example`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/blog/scraper.py.example)). It saves the target images to `files/` folder.
 
 ### Retrospect: Using the Action API
 
@@ -66,9 +67,9 @@ https://murder-drones.fandom.com/api.php?action=query&format=json&prop=imageinfo
 ```
 
 
-## Downloading the reference
+## Downloading the source
 
-Next up is to download the reference video. I just use [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) for this and get the highest/best quality. My command would be something like this, the `-f` switch is what makes it get the best quality possible. 
+Next up is to download the source video. I just use [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) for this and get the highest/best quality. My command would be something like this, the `-f` switch is what makes it get the best quality possible. 
 
 ```
 yt-dlp --no-check-certificate --console-title -f bestvideo*+bestaudio/best -o "%%(title)s.%%(ext)s" --no-playlist --add-metadata https://www.youtube.com/watch?v=mImFz8mkaHo
@@ -84,7 +85,7 @@ It is better to do an initial calculation to count the hashes of all of the refe
 
 It would take a long time. Beside figuring out what method to use and how many bits to use, I have to repeat the whole process twice, because I somehow messed it up, making me need to start over. 
 
-Later, it is possible to use [MoviePy](https://pypi.org/project/moviepy/) to read these frames. For this stage, the related files are [`preparehash.py`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/main/preparehash.py) or [`preparehash_moviepy.py`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/main/preparehash_moviepy.py). Either one of it can be used, which should result similar hashes. 
+Later, it is possible to use [MoviePy](https://pypi.org/project/moviepy/) to read these frames. For this stage, the related files are [`preparehash.py`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/blog/preparehash.py) or [`preparehash_moviepy.py`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/blog/preparehash_moviepy.py). Either one of it can be used, which should result similar hashes. 
 
 Here's an adjusted and abridged version of the MoviePy version. Refer to the code on GitLab if you need more information. My code saves these hashes on `ref-hashes.txt`, each line is for the hash for one frame.
 
@@ -126,7 +127,7 @@ After two of those, I tried to search for another Python library. I found out [M
 
 I found out MoviePy at this stage. As a side quest, I come back to the previous stage (reference hash preparation) and tried to use MoviePy, with same results.
 
-Here's the abridged code of all three methods combined. This is implemented in [`compare.py`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/main/compare.py). 
+Here's the abridged code of all three methods combined. This is implemented in [`compare.py`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/blog/compare.py). 
 
 ```py
 index_target = 0
@@ -205,7 +206,7 @@ Shown below are the screenshots/frames that I compared one to each other, in whi
 
 It's time for uploading our new fresh to the respective pages. This is done using [Pywikibot](https://www.mediawiki.org/wiki/Manual:Pywikibot). You have to set it up first before proceeding, which the link that I gave should explain all of it.
 
-After this, all it takes is to have a script that loops through all the images on the `hq/` folder and run the `upload` script on Pywikibot. Here's the code that I use, which you can check on the repository on [`upload-pwb.bat`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/main/upload-pwb.bat). That script gets Pywikibot from `pwb/`, by the way.
+After this, all it takes is to have a script that loops through all the images on the `hq/` folder and run the `upload` script on Pywikibot. Here's the code that I use, which you can check on the repository on [`upload-pwb.bat`](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/blog/upload-pwb.bat). That script gets Pywikibot from `pwb/`, by the way.
 
 ```batch
 for /f "delims=|" %%f in ('dir /b hq') do python pwb/pwb.py upload -summary:"Best quality from video source" -keep -ignorewarn "hq\%%f" -descfile:"empty.txt" -noverify
@@ -214,7 +215,7 @@ for /f "delims=|" %%f in ('dir /b hq') do python pwb/pwb.py upload -summary:"Bes
 
 ## Closure
 
-Again, I have uploaded the source code on https://gitlab.com/Hans5958-MWS/fandom-murder-drones. This GitLab repository has everything that I've done and you need (minus some secret credentials). Just, please don't do anything bad. ([Or, just do it. No warranty given, anyway.](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/main/LICENSE))
+Again, I have uploaded the source code on https://gitlab.com/Hans5958-MWS/fandom-murder-drones. This GitLab repository has everything that I've done and you need (minus some secret credentials). Just, please don't do anything bad. ([Or, just do it. No warranty given, anyway.](https://gitlab.com/Hans5958-MWS/fandom-murder-drones/-/blob/blog/LICENSE))
 
 To see the uploads that I made, check out [the Special:Contributions of mine on 1 July 2022](https://murder-drones.fandom.com/wiki/Special:Contributions?target=Hans5958&namespace=all&tagfilter=&start=2022-06-01&end=2022-07-01&limit=500).
 
