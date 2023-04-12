@@ -4,8 +4,9 @@ date: 2018-06-20 21:31:09 +0700
 category: Article
 tags: en old-blog
 slug: how-i-accidentally-become-famous-on-a-minecraft-server
-description: Hello everyone. It's been a while since my last post. Let me tell you my story of how I accidentally become famous on a Minecraft server.  I was famous on a cracked server called Cosmic Craft, more exact, it's creative part. It was a free server that still gets 5000 players daily, most of them are from South East Asia, more precisely, from the Philippines. On that day, I don't have a premium and I bought a donator rank on there for $3.50. 
-redirect_from: 
+description: Hello everyone. It's been a while since my last post. Let me tell you my story of how I accidentally become famous on a Minecraft server.
+excerpt: Let me tell you my story of how I accidentally become famous on a Minecraft server. 
+redirectFrom: 
   - /2018/06/20/how-i-accidentally-become-famous-on-a-minecraft-server
 ---
 

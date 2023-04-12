@@ -5,8 +5,8 @@ category: Article
 tags: en programming
 slug: explanation-for-my-presence-ts-base-on-premid
 description: Hello, and welcome to my explanation for my base/template on presence.ts. You might be wondering either how this works or why this thing complicated. In this explanation text, I will guide you how I came with the base that I made, and consequently, solve this systematic problem that a lot of developers do, as I could say.
-excerpt: Hello, and welcome to my explanation for my base/template on ``presence.ts``. You might be wondering either how this works or why this thing complicated. In this explanation text, I will guide you how I came with the base that I made, and consequently, solve this systematic problem that a lot of developers do, as I could say.
-redirect_from: 
+excerpt: In this text, I will guide you how I came with the base that I made, and consequently, solve this systematic problem that a lot of developers do, as I could say.
+redirectFrom: 
   - /2020/06/29/explanation-for-my-presence-ts-base-on-premid
 ---
 This was originally written for someone on an open source project, PreMiD, and it was published [here](https://github.com/Hans5958/PreMiD-Presences-Personal/blob/master/%23%20Docs/explanation-for-base.md). Context probably not needed, but if you want, check out [this repository](https://github.com/PreMiD/Presences) and check the ``presence.ts`` files, and [this documentation](https://docs.premid.app/en/dev/).

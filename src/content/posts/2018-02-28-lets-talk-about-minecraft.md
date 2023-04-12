@@ -4,8 +4,9 @@ date: 2018-02-28 21:24:08 +0700
 category: Article
 tags: en old-blog
 slug: lets-talk-about-minecraft
-description: Ah, Minecraft. Where all kids do unleash their creativity in a shape of pixelated blocks. Well, I played it too, even I’m not a child anymore. I do building sometimes, mainly redstone because I don’t have a talent for building such a large structure. Other times, I play on some online servers, mainly Hypixel or HiveMC. I prefer the ones that don’t involve PvP because I can’t fight and my internet is bad (how sad, isn’t it?). Sometimes I go to some website for a new server to discover, but I mainly stick to that servers.
-redirect_from: 
+description: Ah, Minecraft. Where all kids do unleash their creativity in a shape of pixelated blocks. Well, I played it too, even I'm not a child anymore. So, in this post. I want to talk about it.
+excerpt: Ah, Minecraft. Where all kids do unleash their creativity in a shape of pixelated blocks. Well, I played it too, even I'm not a child anymore. So, in this post. I want to talk about it.
+redirectFrom: 
   - /2018/02/28/lets-talk-about-minecraft
 cover: ../../assets/lets-talk-about-minecraft/title.jpg
 ---

@@ -4,14 +4,15 @@ date: 2019-06-25 20:08:41 +0700
 category: Article
 tags: en old-blog
 slug: scavenger-hunt-writeups-1
-description: Hey, I decided to start a series of post. I call this series "Scavenger Hunt Writeups". I do this because I’m bored and I like scavenger hunts. This includes those mini-ARG that hosted by some random Discord server. I will do this in a relaxing tone, not as technical as when someone found a critical zero-day exploit. This is the first post, hope you like it.
-redirect_from: 
+description: Hey, I decided to start a series of post. I call this series "Scavenger Hunt Writeups". I do this because I'm bored and I like scavenger hunts. This includes those mini-ARG that hosted by some random Discord server. I will do this in a relaxing tone, not as technical as when someone found a critical zero-day exploit. This is the first post, hope you like it.
+excerpt: Hey, I decided to start a series called "Scavenger Hunt Writeups". I do this because I'm bored and I like scavenger hunts. This scavenger hunt is hosted by ChillZone.
+redirectFrom: 
   - /2019/06/25/scavenger-hunt-writeups-1
 ---
 
-Hey, I decided to start a series of post. I call this series "Scavenger Hunt Writeups". I do this because I’m bored and I like scavenger hunts. This includes those mini-ARG that hosted by some random Discord server. I will do this in a relaxing tone, not as technical as when someone found a critical zero-day exploit. This is the first post, hope you like it. 
+Hey, I decided to start a series of post. I call this series "Scavenger Hunt Writeups". I do this because I'm bored and I like scavenger hunts. This includes those mini-ARG that hosted by some random Discord server. I will do this in a relaxing tone, not as technical as when someone found a critical zero-day exploit. This is the first post, hope you like it. 
 
-This scavenger hunt is hosted by ChillZone ([discord.gg/fun](http://discord.gg/fun)), a populated server which I’ve never talked to. As a popular server, they like events, this is one of them. This one is quite easy, surprisingly. So, let’s get into it.
+This scavenger hunt is hosted by ChillZone ([discord.gg/fun](http://discord.gg/fun)), a populated server which I've never talked to. As a popular server, they like events, this is one of them. This one is quite easy, surprisingly. So, let's get into it.
 
 ----
 
