@@ -4,6 +4,7 @@ const postCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string().transform(str => new Date(str)),
+    date_mod: z.string().transform(str => new Date(str)).optional(),
     category: z.string().default('Uncategorized'),
     tags: z.string().default('').transform(str => str.split(' ')),
     description: z.string().default(''),
