@@ -7,6 +7,7 @@ slug: minecraft-hd-heads
 description: So, my friend has successfully invented the so-called Minecraft HD Heads. It's just a simple Minecraft head, but the quality is upscaled, that it's not like "pixelated" anymore. He tells that he could give the steps to do to get it, but I want to try to do it by myself, without any help. I want this as a challenge, something to fill my boredom. 
 redirect_from: 
   - /2018/08/20/minecraft-hd-heads
+cover: ../../assets/minecraft-hd-heads/2.png
 ---
 
 So, my friend has successfully invented the so-called Minecraft HD Heads. It's just a simple Minecraft head, but the quality is upscaled, that it's not like "pixelated" anymore. He tells that he could give the steps to do to get it, but I want to try to do it by myself, without any help. I want this as a challenge, something to fill my boredom. 
@@ -38,7 +39,7 @@ Here, I have a Twitter logo that I put at the head. I upscaled the texture from 
 
 Then, I put it on my resource pack, and, as I expected, it works. 
 
-![hdheads-2.png](/blog/assets/minecraft-hd-heads/2.png) 
+![hdheads-2.png](../../assets/minecraft-hd-heads/2.png) 
 
 So, this part is simple, you upscale the skin, put the image, and then voila.
 
@@ -52,19 +53,19 @@ Then, I use the Minecraft uploader to upload my skin, and then do some things to
 
 After lots of despair, I finally looked at the HD Head, and I found the way. It actually uses the [Minecraft: Education Edition](http://education.minecraft.net) website, that is under the minecraft.net domain. 
 
-![hdheads-3.PNG](/blog/assets/minecraft-hd-heads/3.png) 
+![hdheads-3.PNG](../../assets/minecraft-hd-heads/3.png) 
 
 After some clicky-clicks in here and there, I finally get the skin there and use it for the skin, and changed the URL into mine. 
 
-![hdheads-4.png](/blog/assets/minecraft-hd-heads/4.png) 
+![hdheads-4.png](../../assets/minecraft-hd-heads/4.png) 
 
 On NBTExplorer, I changed the texture using the base64 that's generated, and then changed the UUID into something else. 
 
-![hdheads-5.png](/blog/assets/minecraft-hd-heads/5.png) 
+![hdheads-5.png](../../assets/minecraft-hd-heads/5.png) 
 
 Okay, testing time. Ah, it works! Finally! Oh yeah, I uploaded the bigger version. 
 
-![hdheads-6.png](/blog/assets/minecraft-hd-heads/6.png)
+![hdheads-6.png](../../assets/minecraft-hd-heads/6.png)
 
 ## Final Words
 

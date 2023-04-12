@@ -4,16 +4,12 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import vue from "@astrojs/vue";
 import compress from "astro-compress";
-import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://hans5958.github.io/blog',
   base: '/blog',
   integrations: [mdx(), sitemap(), tailwind(), vue(), 
-    image({
-      serviceEntryPoint: '@astrojs/image/sharp'
-    }), 
     import.meta.env.MODE === "production" && compress({
     img: false
   })],
@@ -22,5 +18,11 @@ export default defineConfig({
       theme: 'github-light',
       langs: []
     }
-  }
+  },
+  experimental: {
+    assets: true
+  },
+  image: {
+    service: "astro/assets/services/sharp",
+  },
 });
