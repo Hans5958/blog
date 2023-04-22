@@ -23,12 +23,8 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro --help` | Get help using the Astro CLI                     |
 
 
-<!--
-
-Not yet considered, coming soon!
-
 ## License
 
-This website is licensed under the terms of [MIT license](LICENSE).
+The texts (articles, writings, etc) is licensed under the terms of [Creative Commons Attribution-ShareAlike 4.0 International license](LICENSE.md)
 
--->
+The code that builts the site is licensed under the terms of [MIT license](LICENSE-code.md).
