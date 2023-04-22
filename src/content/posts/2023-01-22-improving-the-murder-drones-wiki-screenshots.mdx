@@ -1,7 +1,7 @@
 ---
 title: Improving the Murder Drones Wiki screenshots
 date: 2023-01-22 20:52:00 +0700
-dateMod: 2023-04-12 22:29:00 +0700
+dateMod: 2023-04-22 04:25:00 +0700
 category: Article
 tags: en project programming
 slug: improving-the-murder-drones-wiki-screenshots
@@ -33,7 +33,7 @@ The relevant code can be seen on `scraper.py` (or [`scraper.py.example`](https:/
 
 Upon further investigation, there's one other method that I forgot to explore at that time: [the Action API](https://www.mediawiki.org/wiki/API:Main_page).
 
-After a little bit of reading various pages, it is actually possible to obtain obtain the URL to the original without giving tokens or scraping. For example, you would need to do this if you want to get [File:N7.png](https://murder-drones.fandom.com/wiki/File:N7.png).
+After a little bit of research, it is actually possible to obtain the URL to the original without giving tokens or scraping. For example, you would need to do this if you want to get [File:N7.png](https://murder-drones.fandom.com/wiki/File:N7.png).
 
 ```
 https://murder-drones.fandom.com/api.php?action=query&format=json&prop=imageinfo&list=&titles=File%3AN7.png&iiprop=url
