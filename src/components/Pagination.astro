@@ -12,17 +12,17 @@ const { page } = Astro.props;
 
 ---
 
-<nav class="flex border rounded flex-shrink py-1 mt-2">
+<nav class="flex border rounded flex-shrink mt-2">
 	{ page.url.prev && <div>
-		<a href={ relativeUrl(page.url.prev) } class="py-1 px-2 flex justify-center items-center">
+		<a href={ relativeUrl(page.url.prev) } class="py-2 px-3 flex justify-center items-center hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-200 focus:ring focus:ring-blue-500 focus:outline-none active:outline-none rounded-l">
 			<Icon name="bi:arrow-left" class="mr-2 w-4 h-4" /> Page { page.currentPage - 1 }
 		</a>
 	</div> }
-	<div class="flex grow justify-center items-center px-2">
+	<div class="flex grow justify-center items-center px-3 py-2">
 		Page { page.currentPage } of { page.lastPage }
 	</div>
 	{ page.url.next && <div>
-		<a href={ relativeUrl(page.url.next) } class="py-1 px-2 flex justify-center items-center">
+		<a href={ relativeUrl(page.url.next) } class="py-2 px-3 flex justify-center items-center hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-200 focus:ring focus:ring-blue-500 focus:outline-none active:outline-none rounded-r">
 			Page { page.currentPage + 1 } <Icon name="bi:arrow-right" class="ml-2 w-4 h-4" />
 		</a>
 	</div> }
