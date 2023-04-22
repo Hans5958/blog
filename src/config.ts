@@ -1,5 +1,4 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+import childProcess from "node:child_process";
 
 const today = new Date();
 
@@ -10,6 +9,9 @@ export const SITE_REPOSITORY = 'https://github.com/Hans5958/blog'
 export const SITE_TWITTER = 'Hans5958'
 export const COPYRIGHT_YEAR = today.getFullYear()
 export const BASE_URL = import.meta.env.BASE_URL.replace(/\/$/, '')
+
+export const COMMIT_HASH = childProcess.execSync('git rev-parse HEAD')?.toString().trim();
+export const COMMIT_HASH_SHORT = childProcess.execSync('git rev-parse --short HEAD')?.toString().trim();
 
 export interface BaseProps {
 	title?: string;
