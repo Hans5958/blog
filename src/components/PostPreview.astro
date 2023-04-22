@@ -43,13 +43,20 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 		<header class="post-header">
 			<h1 class="text-3xl font-bold mb-2" itemprop="name headline">{ post.data.title }</h1>
 			<p class="text-gray-500">
-				<Icon name="bi:calendar-fill" class="w-4 h-4 inline align-[-.125rem]" />
-				<time class="post-date-published" datetime={ post.data.date.toISOString() } itemprop="datePublished">
+				<Icon name="bi:calendar-fill" class="w-4 h-4 inline align-[-.125rem]" aria-hidden="true" aria-label="Created" />
+				<time datetime={ post.data.date.toISOString() } itemprop="dateCreated datePublished">
 					{ post.data.date.toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' }) }
 				</time>
 				–
-				<Icon name="bi:clock-fill" class="w-4 h-4 inline align-[-.125rem]" />
-				<span>{ readingTimeDisplay }</span>	
+				{ post.data.dateMod && (<>
+					<Icon name="bi:pencil-fill" class="w-4 h-4 inline align-[-.125rem]" aria-hidden="true" aria-label="Modified" />
+					<time datetime={ post.data.dateMod.toISOString() } itemprop="dateModified">
+						{ post.data.dateMod.toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' }) }
+					</time>
+					–
+				</>) }
+				<Icon name="bi:clock-fill" class="w-4 h-4 inline align-[-.125rem]" aria-label="Time to read" />
+				<span>{ readingTimeDisplay }</span>
 			</p>
 		</header>
 
