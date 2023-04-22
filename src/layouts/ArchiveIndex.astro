@@ -11,7 +11,10 @@ const titleDisplay = `${title} - Archive`
 
 <Default title={ titleDisplay }>
 	<section class="container mx-auto max-w-[1140px] py-12">
-		<h1 class="text-5xl font-bold mb-8">Archive <span class="text-xl text-gray-500 font-normal">{ title }</span></h1>
+		{ title == "Index" ? <h1 class="text-5xl font-bold mb-8">Archive</h1> : <h1>
+			<p class="text-xl text-gray-500 font-normal">Archive</p>
+			<p class="text-5xl font-bold mb-8">{ title }</p>
+		</h1> }
 		<slot />
 	</section>
 </Default>
