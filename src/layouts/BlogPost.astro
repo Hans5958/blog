@@ -50,6 +50,7 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 
 		<div class="md:col-span-9 md:row-span-2 md:col-start-1 md:row-start-2">
 			<div>
+				<!-- Main cover image, displayed on normal view -->
 				{ post.data.cover && (<>
 					<Image itemprop="image" class="mb-3" src={ post.data.cover } alt={ post.data.coverAlt } />
 				</>) }
@@ -61,6 +62,7 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 			</div>
 
 			<div class="markdown" itemprop="articleBody">
+				<!-- Dummy cover image, displayed on reader view just in case the main not detected (e.g. Firefox) -->
 				{ post.data.cover && (<>
 					<Image itemprop="image" class="mb-3 hidden" src={ post.data.cover } alt={ post.data.coverAlt } />
 				</>) }
@@ -98,9 +100,5 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 			</div>
 		</div>
 
-
-	</article>
-
-	<article itemscope itemtype="http://schema.org/BlogPosting">
 	</article>
 </Default>
