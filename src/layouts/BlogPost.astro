@@ -43,7 +43,7 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 
 		<div class="text-gray-500 hidden md:block md:col-span-3 md:text-sm md:col-start-10 md:row-start-3">
 			<div class="md:sticky md:top-4">
-				<h3 class="mb-2 pb-2 border-b">Contents</h3>
+				<h3 class="mb-2 pb-2 border-b"><Icon name="fa-solid:list" class="w-4 h-4 inline align-[-.125rem]" /> Contents</h3>
 				<TableOfContents headings={ headings } />
 			</div>
 		</div>
@@ -57,7 +57,7 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 			</div>
 			
 			<div class="md:hidden text-gray-500 mb-4 p-4 border rounded">
-				<h3 class="mb-2 pb-2 border-b">Contents</h3>
+				<h3 class="mb-2 pb-2 border-b"><Icon name="fa-solid:list" class="w-4 h-4 inline align-[-.125rem]" /> Contents</h3>
 				<TableOfContents2 headings={ headings } />
 			</div>
 
@@ -71,12 +71,12 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 		</div>
 
 		<div class="text-gray-500 mb-4 md:col-span-3 md:text-sm md:col-start-10 md:row-start-2 mt-4 pt-4 border-t md:mt-0 md:pt-0 md:border-none">
-			<p class="mb-1">Tags: { post.data.tags.length === 0 ? <span class="italic">none</span> : <>
+			<p class="mb-1"><Icon name="octicon:hash-16" class="w-4 h-4 inline align-[-.125rem]" /> Tags: { post.data.tags.length === 0 ? <span class="italic">none</span> : <>
 				{ post.data.tags.map((tag, i) => <>
 					<a class="hover:underline focus:underline active:underline active:text-gray-700" href={ relativeUrl(`/tag/${tag}`) }>{ tag }</a>{ i !== post.data.tags.length - 1 && ', ' }
 				</>) } 
 			</> }</p>
-			<p>Category: <a class="hover:underline focus:underline active:underline active:text-gray-700" href={ relativeUrl(`/category/${post.data.category.toLowerCase()}`) }>{ post.data.category }</a></p>			
+			<p><Icon name="octicon:file-directory-16" class="w-4 h-4 inline align-[-.125rem]" /> Category: <a class="hover:underline focus:underline active:underline active:text-gray-700" href={ relativeUrl(`/category/${post.data.category.toLowerCase()}`) }>{ post.data.category }</a></p>			
 		</div>
 
 		<div class="md:col-span-9 md:row-start-4 mt-4 md:pt-4 md:border-t">
