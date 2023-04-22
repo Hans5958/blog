@@ -26,6 +26,6 @@ All commands are run from the root of the project, from a terminal:
 
 ## License
 
-The texts (articles, writings, etc) is licensed under the terms of [Creative Commons Attribution-ShareAlike 4.0 International license](LICENSE.md)
+The texts (articles, writings, etc) are licensed under the terms of [Creative Commons Attribution-ShareAlike 4.0 International license](LICENSE.md)
 
 The code that builts the site is licensed under the terms of [MIT license](LICENSE-code.md).
