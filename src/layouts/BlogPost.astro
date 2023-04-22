@@ -71,8 +71,7 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 		<div class="text-gray-500 mb-4 md:col-span-3 md:text-sm md:col-start-10 md:row-start-2 mt-4 pt-4 border-t md:mt-0 md:pt-0 md:border-none">
 			<p class="mb-1">Tags: { post.data.tags.length === 0 ? <span class="italic">none</span> : <>
 				{ post.data.tags.map((tag, i) => <>
-					<a class="hover:underline focus:underline active:underline active:text-gray-700" href={ relativeUrl(`/tag/${tag}`) }>{ tag }</a>
-					{ i !== post.data.tags.length - 1 && ', ' }
+					<a class="hover:underline focus:underline active:underline active:text-gray-700" href={ relativeUrl(`/tag/${tag}`) }>{ tag }</a>{ i !== post.data.tags.length - 1 && ', ' }
 				</>) } 
 			</> }</p>
 			<p>Category: <a class="hover:underline focus:underline active:underline active:text-gray-700" href={ relativeUrl(`/category/${post.data.category.toLowerCase()}`) }>{ post.data.category }</a></p>			
