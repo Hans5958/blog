@@ -23,7 +23,7 @@ if (readingTimeMins === 1) readingTimeDisplay = "1 minute"
 else readingTimeDisplay = readingTimeMins + " minutes"
 ---
 
-<Default title={post.data.title} description={post.data.description} coverSrc={ relativeUrl(post.data.cover?.src || "") } coverAlt={ post.data.cover?.alt }>
+<Default title={post.data.title} description={post.data.description} coverSrc={ post.data.cover?.src } coverAlt={ post.data.coverAlt }>
 	
 	<article class="container mx-auto max-w-[1140px] py-6 md:grid md:grid-cols-12 gap-x-6 grid-rows-[min-content_min-content_1fr]" itemscope itemtype="http://schema.org/BlogPosting">
 
