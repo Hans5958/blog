@@ -3,7 +3,7 @@ title: 'Cracking the mystery of Minecraft HD Heads, alone'
 date: 2018-08-20 20:33:50 +0700
 dateMod: 2023-04-12 22:00:00 +0700
 category: Article
-tags: en old-blog project
+tags: en old-blog project story
 slug: minecraft-hd-heads
 description: So, my friend has successfully invented the so-called Minecraft HD Heads. It's just a simple Minecraft head, but the quality is upscaled, that it's not like "pixelated" anymore. He tells that he could give the steps to do to get it, but I want to try to do it by myself, without any help. I want this as a challenge, something to fill my boredom. 
 excerpt: So, my friend has successfully invented the so-called Minecraft HD heads, and I want to try to do it by myself, without any help.

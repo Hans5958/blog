@@ -1,16 +1,17 @@
 ---
 title: "osu! site corrections and reflections"
 date: 2023-01-29 15:43:50 +0700
+date_mod: 2023-04-22 15:12:00 +0700
 category: Article
 tags: en games
 slug: osu-site-corrections-and-reflections
-excerpt: While doing the makeover of my osu! site (now page), it is so outdated, that I had a feeling to write this blog post as a supplement of it.
-description: While doing the makeover of my osu! site (now page), it is so outdated, that I had a feeling to write this blog post as a supplement of it. I want to keep the authenticity of the page as it is a trace of my past, so the makeover does not include every correction, which is mentioned here instead.
+excerpt: While doing the makeover of my osu! site (now page), it is so outdated, that I had a feeling to write this blog post as a supplement of it
+description: While doing the makeover of my osu! site (now page), it is so outdated, that I had a feeling to write this blog post as a supplement of it. I want to keep the authenticity of the page as it is a trace of my past, so the makeover does not include every correction, which is mentioned here instead. It is also a chance for me to reflect on the past of me.
 ---
 
 Few years ago, I copied my osu! website from Google Pages to my website on GitHub in such unprocessed form. With the website rewrite using Astro, I have decided to also do a makeover of this page.
 
-While doing that, the website (now page) is so outdated, that I had a feeling to write this blog post as a supplement of it. I want to keep the authenticity of the page as it is a trace of my past, so the makeover does not include every correction, which is mentioned here instead.
+While doing that, the website (now page) is so outdated, that I had a feeling to write this blog post as a supplement of it. I want to keep the authenticity of the page as it is a trace of my past, so the makeover does not include every correction, which is mentioned here instead. It is also a chance for me to reflect on the past of me.
 
 Most of the time I refer to the contents of the older version, so if you want to check that, [it is on my old website](/website-jekyll/osu). Otherwise, the new version is now up [here](/osu).
 
@@ -22,7 +23,7 @@ I have added the links to the relevant forum posts (except IOS5, which I can't f
 
 If you want to see the skin in exhibition, I did [a video with it playing My Love](https://www.youtube.com/watch?v=dcpcozFe62I&list=PLGKLWaQUPc9NepfSNALR6EYrri4OsjC2b).
 
-> YouTube: youtube.com/Hans5958 (Black MIDIs, osu! videos, and more)
+> YouTube: [youtube.com/Hans5958](https://youtube.com/Hans5958) (Black MIDIs, osu! videos, and more)
 
 The YouTube channel is still there, albeit it is now focused for higher standards. The second channel, [Channel5958](https://www.youtube.com/channel/UCL08j78oPrIoWn_N7LSAUGQ), is more active, gameplay wise. If I start doing osu! videos, I would upload it there.
 

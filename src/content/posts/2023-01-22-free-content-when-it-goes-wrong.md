@@ -2,7 +2,7 @@
 title: "Free content: When it goes wrong"
 date: 2023-01-22 19:07:00 +0700
 category: Article
-tags: en copyright
+tags: en copyright essay
 slug: free-content-when-it-goes-wrong
 excerpt: You just created a free content. What's that? Someone use your creation for money? Here's a little blabber of when it goes wrong. 
 description: You just created a free content. What's that? Someone use your creation for money? Here's a little blabber of when it goes wrong. 
