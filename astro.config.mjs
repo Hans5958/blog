@@ -11,8 +11,9 @@ export default defineConfig({
   base: '/blog',
   integrations: [mdx(), sitemap(), tailwind(), vue(), 
     import.meta.env.MODE === "production" && compress({
-    img: false
-  })],
+      img: false
+    })
+  ],
   markdown: {
     shikiConfig: {
       theme: 'github-light',
