@@ -4,8 +4,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 import Icon from 'astro-icon'
 
 import { getCollection } from 'astro:content'
-import PostPreviewGrid from '../components/PostPreviewGrid.astro'
-import PaginationDummy from '../components/PaginationDummy.astro'
+import PostPreviewGrid from '../components/PostPreview/Grid.astro'
+import PaginationDummy from '../components/Pagination/Dummy.astro'
 import relativeUrl from '../components/urlHelper.js'
 
 const blogEntries = await getCollection('posts')

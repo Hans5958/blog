@@ -16,7 +16,7 @@ let { headings } = Astro.props;
 ---
 
 
-<ul>
+<ul class="ml-6">
 	{ headings.map(heading => (<>
 		<li>
 			<a href={ "#" + heading.slug }>{ heading.text }</a>
@@ -27,14 +27,7 @@ let { headings } = Astro.props;
 	</>)) }	
 </ul>
 
-<style lang="scss">
-
-	ul {
-		@apply ml-6
-	}
-
-	li {
-	}
+<style>
 
 	a {
 		@apply block mt-0.5 rounded transition;

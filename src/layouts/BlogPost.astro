@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import TableOfContents from '../components/TableOfContents.astro';
-import TableOfContents2 from '../components/TableOfContents2.astro';
+import TableOfContents from '../components/TOC/TOC1.astro';
+import TableOfContents2 from '../components/TOC/TOC2.astro';
 import Default from './Default.astro';
 import Giscus from '@giscus/vue'
 import relativeUrl from '../components/urlHelper.js';
@@ -107,4 +107,11 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 		</div>
 
 	</article>
+
+	<style>
+		.footnotes {
+			@apply py-4
+		}
+	</style>
+
 </Default>

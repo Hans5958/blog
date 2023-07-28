@@ -2,10 +2,10 @@
 import { Icon } from 'astro-icon'
 import { CollectionEntry, getCollection } from 'astro:content'
 import relativeUrl from '../../components/urlHelper.js'
-import Pagination from '../../components/Pagination.astro'
-import PaginationDummy from '../../components/PaginationDummy.astro'
-import PostPreview from '../../components/PostPreview.astro'
-import PostPreviewGrid from '../../components/PostPreviewGrid.astro'
+import Pagination from '../../components/Pagination/Pagination.astro'
+import PaginationDummy from '../../components/Pagination/Dummy.astro'
+import PostPreview from '../../components/PostPreview/Post.astro'
+import PostPreviewGrid from '../../components/PostPreview/Grid.astro'
 import ArchiveIndex from '../../layouts/ArchiveIndex.astro'
 
 const blogEntries = await getCollection('posts')
