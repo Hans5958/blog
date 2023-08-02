@@ -1,6 +1,6 @@
 ---
-import { SITE_AUTHOR, SITE_TITLE, SITE_TWITTER } from '../config.js';
-import '../styles/global.css';
+import { SITE_AUTHOR, SITE_TITLE, SITE_TWITTER } from '../config.js'
+import '../styles/global.css'
 
 export interface Props {
 	title?: string;
@@ -28,8 +28,6 @@ if (title === "") {
 } else {
 	titleDisplay = `${title} - ${ SITE_TITLE }`
 }
-
-const relativeUrl = import.meta.env.BASE_URL
 ---
 
 <title>{ titleDisplay }</title>
@@ -47,13 +45,13 @@ const relativeUrl = import.meta.env.BASE_URL
 <meta property="og:site_name" content={ SITE_TITLE } />
 <meta property="og:locale" content="en_US" />
 { coverSrc && <>
-	<meta property="og:image" content={ coverSrc } />
+	<meta property="og:image" content={ new URL(coverSrc, Astro.url) } />
 	<meta property="og:image:alt" content={ coverAlt } />
 </> }
 
 { coverSrc ? <>
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:image" content={ coverSrc } />
+	<meta name="twitter:image" content={ new URL(coverSrc, Astro.url) } />
 </> : <meta name="twitter:card" content="summary" /> }
 <meta name="twitter:site" content={ SITE_TWITTER } />
 <meta name="twitter:creator" content={ SITE_TWITTER } />
