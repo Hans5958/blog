@@ -155,4 +155,8 @@
 		@apply list-decimal
 	}
 
+	.footnotes {
+		@apply pt-4 border-t
+	}
+
 }
