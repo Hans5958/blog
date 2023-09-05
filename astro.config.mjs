@@ -8,8 +8,8 @@ import lightningcss from 'vite-plugin-lightningcss'
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://hans5958.github.io/blog',
-	base: '/blog',
+	site: 'https://hans5958.github.io/blog/',
+	base: '/blog/',
 	integrations: [mdx(), sitemap(), tailwind({
 		applyBaseStyles: false
 	}), vue(),
@@ -23,9 +23,6 @@ export default defineConfig({
 			langs: []
 		}
 	},
-	experimental: {
-		assets: true
-	},
 	image: {
 		service: {
 			entrypoint: 'astro/assets/services/sharp'
@@ -37,5 +34,6 @@ export default defineConfig({
 				browserslist: '>= 0.25%',
 			}),
 		]
-	}
+	},
+	compressHTML: false
 })

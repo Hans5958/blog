@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import relativeUrl from '../components/urlHelper.js';
 import { SITE_TITLE } from '../config.js';
 
-export async function get(context) {
+export async function GET(context) {
   const blog = await getCollection('posts');
   return rss({
     title: SITE_TITLE,
