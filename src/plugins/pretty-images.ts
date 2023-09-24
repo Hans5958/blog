@@ -13,13 +13,13 @@ export const prettyImages: RehypePlugin<[]> = () => tree => {
 
 			if (node.children.length !== 1) return
 			const children = node.children[0]
-			if (children.name !== "__AstroImage__" && children.tagName !== "img") return
+			if (children.name !== "astro-image" && children.tagName !== "img") return
 			node.tagName = "figure"
 
 			alt = children?.properties?.alt || children?.attributes?.filter(entry => entry.name === 'alt')?.[0]?.value
 
 		} else if (node.tagName === "img") {
-			if (parent && parent.type === "element" && parent.tagName === "figure") return
+			if (parent?.type === "element" && parent?.tagName === "figure") return
 
 			const imgNode = structuredClone(node)
 

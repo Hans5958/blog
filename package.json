@@ -27,7 +27,6 @@
 		"astro-icon": "^1.0.0-next.2",
 		"astro-og-canvas": "^0.2.1",
 		"dayjs": "^1.11.10",
-		"lightningcss-wasm": "^1.22.0",
 		"reading-time": "^1.5.0",
 		"remark": "^15.0.1",
 		"remark-gfm": "^4.0.0",
