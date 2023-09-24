@@ -21,7 +21,7 @@ for (const post of await getCollection('posts')) {
 }
 
 
-export const { getStaticPaths, get: GET } = OGImageRoute({
+export const { getStaticPaths, GET } = OGImageRoute({
 	param: 'route',
 
 	pages: posts,

@@ -5,7 +5,8 @@ import tailwind from "@astrojs/tailwind"
 import vue from "@astrojs/vue"
 import compress from "astro-compress"
 import lightningcss from 'vite-plugin-lightningcss'
-import { betterImages } from './src/plugins/pretty-images'
+import icon from "astro-icon";
+import { prettyImages } from './src/plugins/pretty-images'
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +17,16 @@ export default defineConfig({
 	}), vue(),
 	import.meta.env.MODE === "production" && compress({
 		img: false
-	})
+	}),
+	icon({
+		iconDir: "src/assets/icons",
+		include: {
+			'bi': ["*"],
+			'fa-solid': ["*"],
+			'octicon': ["*"],
+			'simple-icons': ["*"],
+		},
+	  }),
 	],
 	markdown: {
 		shikiConfig: {
@@ -24,7 +34,7 @@ export default defineConfig({
 			langs: []
 		},
 		rehypePlugins: [
-			betterImages
+			prettyImages
 		],
 	},
 	image: {

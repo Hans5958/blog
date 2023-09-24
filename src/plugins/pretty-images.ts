@@ -4,12 +4,10 @@
 import type { RehypePlugin } from "@astrojs/markdown-remark"
 import { visit } from "unist-util-visit"
 
-export const betterImages: RehypePlugin<[]> = () => tree => {
+export const prettyImages: RehypePlugin<[]> = () => tree => {
 	visit(tree, "element", (node, _index, parent) => {
 
 		let alt
-
-		// console.log(node.tagName, parent?.type, node)
 
 		if (node.tagName === "p") {
 
@@ -21,11 +19,7 @@ export const betterImages: RehypePlugin<[]> = () => tree => {
 			alt = children?.properties?.alt || children?.attributes?.filter(entry => entry.name === 'alt')?.[0]?.value
 
 		} else if (node.tagName === "img") {
-			console.log("img!", parent?.type)
-
 			if (parent && parent.type === "element" && parent.tagName === "figure") return
-
-			console.log("img!")
 
 			const imgNode = structuredClone(node)
 
