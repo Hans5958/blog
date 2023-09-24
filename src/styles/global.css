@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+figure figcaption {
+	@apply mt-2 text-gray-500 text-sm
+}
+
+#cover-main {
+	display: block !important;
+}
+
+#cover-dummy {
+	display: none;
+}
+
 .markdown {
 
 	h1, h2, h3, h4, h5, h6 {
@@ -28,7 +40,7 @@
 		@apply font-semibold
 	}
 
-	blockquote, details, dl, ol, p, pre, table, ul, .highlight {
+	blockquote, details, dl, ol, p, pre, table, ul, .highlight, figure {
 		@apply mb-4
 	}
 

@@ -7,7 +7,8 @@ import Giscus from '@giscus/vue'
 import relativeUrl from '../components/urlHelper.js';
 import { Icon } from 'astro-icon';
 import readingTime from 'reading-time';
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets'
+import PrettyImage from '../components/PrettyImage.astro'
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -57,9 +58,9 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 		<div class="md:col-span-9 md:row-span-2 md:col-start-1 md:row-start-2">
 			<div>
 				<!-- Main cover image, displayed on normal view -->
-				{ post.data.cover && (<>
-					<Image itemprop="image" class="mb-3" src={ post.data.cover } alt={ post.data.coverAlt } />
-				</>) }
+				{ post.data.cover &&
+					<PrettyImage id="cover-main" itemprop="image" class="mb-3" src={ post.data.cover } alt={ post.data.coverAlt } style="display: none" />
+				}
 			</div>
 			
 			<div class="md:hidden text-gray-500 mb-4 p-4 border rounded">
@@ -69,9 +70,9 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 
 			<div class="markdown" itemprop="articleBody">
 				<!-- Dummy cover image, displayed on reader view just in case the main not detected (e.g. Firefox) -->
-				{ post.data.cover && (<>
-					<Image itemprop="image" class="mb-3 hidden" src={ post.data.cover } alt={ post.data.coverAlt } />
-				</>) }
+				{ post.data.cover && 
+					<PrettyImage id="cover-dummy" class="mb-3 hidden" src={ post.data.cover } alt={ post.data.coverAlt } /> 
+				}
 				<Content />
 			</div>
 		</div>

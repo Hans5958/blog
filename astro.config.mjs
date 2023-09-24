@@ -5,6 +5,7 @@ import tailwind from "@astrojs/tailwind"
 import vue from "@astrojs/vue"
 import compress from "astro-compress"
 import lightningcss from 'vite-plugin-lightningcss'
+import { betterImages } from './src/plugins/pretty-images'
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,12 +22,13 @@ export default defineConfig({
 		shikiConfig: {
 			theme: 'github-light',
 			langs: []
-		}
+		},
+		rehypePlugins: [
+			betterImages
+		],
 	},
 	image: {
-		service: {
-			entrypoint: 'astro/assets/services/sharp'
-		},
+		remotePatterns: [{ protocol: "https" }],
 	},
 	vite: {
 		plugins: [
