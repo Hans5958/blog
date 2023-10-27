@@ -11,7 +11,11 @@ import { COMMIT_HASH, COMMIT_HASH_SHORT, COPYRIGHT_YEAR, SITE_AUTHOR, SITE_REPOS
 			<p>Code licensed under <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY + '/blob/master/LICENSE-code.md' }>MIT License</a>.</p>
 		</div>
 		<div class="text-right">
-			<p><Icon name="simple-icons:github" class="w-4 h-4 inline align-[-.125rem]" /> <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY }>Site repository</a> - Revision: <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY + '/commit/' + COMMIT_HASH }><code>{ COMMIT_HASH_SHORT }</code></a></p>
+			<p>
+				<Icon name="simple-icons:github" class="w-4 h-4 inline align-[-.125rem]" /> <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY }>Site repository</a>
+				<span class="font-black">·</span>
+				Revision: <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY + '/commit/' + COMMIT_HASH }><code>{ COMMIT_HASH_SHORT }</code></a>
+			</p>
 			<p><Icon name="bi:envelope-exclamation-fill" class="w-4 h-4 inline align-[-.125rem]" /> Found an issue? <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY + '/issues' }>Please report!</a></p>
 		</div>
 	</div>
