@@ -47,13 +47,13 @@ else readingTimeDisplay = readingTimeMins + " minutes"
 				<time datetime={ post.data.date.toISOString() } itemprop="dateCreated datePublished">
 					{ post.data.date.toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' }) }
 				</time>
-				–
+				<span class="font-black">·</span>
 				{ post.data.dateMod && (<>
 					<Icon name="mdi:calendar-edit" class="w-4 h-4 inline align-[-.125rem]" aria-hidden="true" aria-label="Modified" />
 					<time datetime={ post.data.dateMod.toISOString() } itemprop="dateModified">
 						{ post.data.dateMod.toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' }) }
 					</time>
-					–
+					<span class="font-black">·</span>
 				</>) }
 				<Icon name="bi:clock-fill" class="w-4 h-4 inline align-[-.125rem]" aria-label="Time to read" />
 				<span>{ readingTimeDisplay }</span>
