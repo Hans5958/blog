@@ -22,9 +22,9 @@ export default defineConfig({
 		iconDir: "src/assets/icons",
 		include: {
 			'bi': ["*"],
-			'fa-solid': ["*"],
-			'octicon': ["*"],
+			'fa6-solid': ["*"],
 			'simple-icons': ["*"],
+			'mdi': ["*"],
 		},
 	  }),
 	],

@@ -172,3 +172,7 @@ figure figcaption {
 	}
 
 }
+
+[data-icon^=mdi] {
+	transform: scale(1.2)
+}
