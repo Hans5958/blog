@@ -39,8 +39,8 @@ blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(
 <section id="articles" class="container mx-auto max-w-[1140px] mt-12 pb-12">
 	<h2 class="text-5xl font-bold">Articles</h2>
 	<p class="mt-4 mb-8">For more in-depth reading, check out articles made by yours truly.</p>
-	<PostPreviewGrid posts={ blogEntries.filter(post => post.data.category === 'Article' ).slice(0, 10) } />
-	<PaginationDummy lastPage={ Math.ceil(blogEntries.length / 10) } url='/category/article/page/2' />
+	<PostPreviewGrid posts={ blogEntries.filter(post => post.data.category === 'Article').slice(0, 10) } />
+	<PaginationDummy lastPage={ Math.ceil(blogEntries.filter(post => post.data.category === 'Article').length / 10) } url='/category/article/page/2' />
 </section>
 
 </Default>
