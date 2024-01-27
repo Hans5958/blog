@@ -12,21 +12,14 @@ import { prettyImages } from './src/plugins/pretty-images'
 export default defineConfig({
 	site: 'https://hans5958.github.io/blog/',
 	base: '/blog/',
-	integrations: [mdx(), sitemap(), tailwind({
-		applyBaseStyles: false
-	}), vue(),
-	import.meta.env.MODE === "production" && compress({
-		img: false
-	}),
-	icon({
-		iconDir: "src/assets/icons",
-		include: {
-			'bi': ["*"],
-			'fa6-solid': ["*"],
-			'simple-icons': ["*"],
-			'mdi': ["*"],
-		},
-	  }),
+	integrations: [
+		mdx(), sitemap(), vue(), icon(),
+		tailwind({
+			applyBaseStyles: false
+		}),
+		import.meta.env.MODE === "production" && compress({
+			img: false
+		}),
 	],
 	markdown: {
 		shikiConfig: {
