@@ -1,23 +1,12 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content'
+import getMonths from '../getMonths'
 import ArchiveParted from '../../../../layouts/ArchiveParted.astro'
 
 export async function getStaticPaths({ paginate }) {
-	const blogEntries = await getCollection('posts')
-	blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-
-	const dates: { [index: number]: CollectionEntry<'posts'>[] } = {}
+	const months = await getMonths()
 	
-	blogEntries.forEach(post => {
-		const postDate = `${post.data.date.getFullYear()}-${(post.data.date.getMonth() + 1).toString().padStart(2, '0')}`
-		if (!dates[postDate]) {
-			dates[postDate] = []
-		}
-		dates[postDate].push(post)
-	})
-
-	return Object.entries(dates).flatMap(([date, pages]) => {
-		const [year, month] = date.split('-')
+	return Object.entries(months).flatMap(([ date, pages ]) => {
+		const [ year, month ] = date.split('-')
 		const paginateResult = paginate(pages, { params: { year, month }, pageSize: 10 })
 		return paginateResult.map(paginatePage => ({
 			params: { year, month, ...paginatePage.params },

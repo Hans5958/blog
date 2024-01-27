@@ -1,26 +1,15 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content'
+import getYears from '../getYear'
 import ArchiveParted from '../../../layouts/ArchiveParted.astro'
 
 export async function getStaticPaths({ paginate }) {
-	const blogEntries = await getCollection('posts')
-	blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+	const years = await getYears()
 
-	const years: { [index: number]: CollectionEntry<'posts'>[] } = {}
-	
-	blogEntries.forEach(post => {
-		const postYear = post.data.date.getFullYear()
-		if (!years[postYear]) {
-			years[postYear] = []
-		}
-		years[postYear].push(post)
-	})
-
-	return Object.entries(years).flatMap(([year, pages]) => {
+	return Object.entries(years).flatMap(([ year, pages ]) => {
 		let paginateResult = paginate(pages, { params: { year }, pageSize: 10 })
 		return paginateResult.map(paginatePage => ({
-			params: { year: year, ...paginatePage.params },
-			props: { year: year, ...paginatePage.props }
+			params: { year, ...paginatePage.params },
+			props: { year, ...paginatePage.props }
 		}))
 	})
 }
@@ -29,4 +18,4 @@ const { page, year } = Astro.props;
 const title = `Year: ${year}`
 ---
 
-<ArchiveParted page={page} title={title} />
+<ArchiveParted page={ page } title={ title } />

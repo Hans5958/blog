@@ -1,29 +1,15 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content'
+import getTags from '../../getTags'
 import ArchiveParted from '../../../../layouts/ArchiveParted.astro'
 
 export async function getStaticPaths({ paginate }) {
-	const blogEntries = await getCollection('posts')
-	blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-
-	const tags: { [index: string]: CollectionEntry<'posts'>[] } = {}
+	const tags = await getTags()
 	
-	blogEntries.forEach(post => {
-		const postTags = post.data.tags
-		// console.log(postTags)
-		postTags.forEach(tag => {
-			if (!tags[tag]) {
-				tags[tag] = []
-			}
-			tags[tag].push(post)
-		})
-	})
-	
-	return Object.entries(tags).flatMap(([tag, pages]) => {
-		let paginateResult = paginate(pages, { params: { tag }, pageSize: 10 })
+	return Object.entries(tags).flatMap(([ id, data ]) => {
+		let paginateResult = paginate(data.posts, { params: { tag: id }, pageSize: 10 })
 		return paginateResult.map(paginatePage => ({
-			params: { tag: tag, ...paginatePage.params },
-			props: { tag: tag, ...paginatePage.props }
+			params: { tag: id, ...paginatePage.params },
+			props: { ...data, ...paginatePage.props }
 		}))
 	})
 }

@@ -1,32 +1,22 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content'
+import getCategories from '../../getCategories'
 import ArchiveParted from '../../../../layouts/ArchiveParted.astro'
 
 export async function getStaticPaths({ paginate }) {
-	const blogEntries = await getCollection('posts')
-	blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+	const categories = await getCategories()
 
-	const categories: { [index: string]: CollectionEntry<'posts'>[] } = {}
-	
-	blogEntries.forEach(post => {
-		const category = post.data.category
-		if (!categories[category]) {
-			categories[category] = []
-		}
-		categories[category].push(post)
-	})
-
-	return Object.entries(categories).flatMap(([category, pages]) => {
-		let paginateResult = paginate(pages, { params: { category }, pageSize: 10 })
+	return Object.entries(categories).flatMap(([ id, data ]) => {
+		let paginateResult = paginate(data.posts, { params: { category: id }, pageSize: 10 })
 		return paginateResult.map(paginatePage => ({
-			params: { category: category.toLowerCase(), ...paginatePage.params },
-			props: { category: category, ...paginatePage.props }
+			params: { category: id, ...paginatePage.params },
+			props: { ...data, ...paginatePage.props }
 		}))
 	})
+
 }
 
-const { page, category } = Astro.props;
-const title = `Category: ${category}`
+const { page, name, description } = Astro.props;
+const title = `Category: ${ name }` 
 ---
 
-<ArchiveParted page={page} title={title} />
+<ArchiveParted page={ page } title={ title } description={ description } />

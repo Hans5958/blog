@@ -3,18 +3,25 @@ import Default from './Default.astro';
 
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 const titleDisplay = `${title} - Archive`
 ---
 
 <Default title={ titleDisplay }>
 	<section class="container mx-auto max-w-[1140px] py-12">
-		{ title == "Index" ? <h1 class="text-5xl font-bold mb-8">Archive</h1> : <h1>
-			<p class="text-xl text-gray-500 font-normal">Archive</p>
-			<p class="text-5xl font-bold mb-8">{ title }</p>
-		</h1> }
+		<header class="mb-8">
+			{ title == "Index" ? 
+				<h1 class="text-5xl font-bold">Archive</h1> : 
+				<>
+					<p class="text-xl text-gray-500 font-normal">Archive</p>
+					<h1 class="text-5xl font-bold">{ title }</h1>
+					<p class="font-normal mt-4">{ description }</p>
+				</> 
+			}
+		</header>
 		<slot />
 	</section>
 </Default>

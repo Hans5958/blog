@@ -1,29 +1,18 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content'
+import getCategories from '../getCategories'
 import Archive from '../../../layouts/Archive.astro'
 
 export async function getStaticPaths() {
-	const blogEntries = await getCollection('posts')
-	blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+	const categories = await getCategories()
 
-	const categories: { [index: string]: CollectionEntry<'posts'>[] } = {}
-	
-	blogEntries.forEach(post => {
-		const category = post.data.category
-		if (!categories[category]) {
-			categories[category] = []
-		}
-		categories[category].push(post)
-	})
-
-	return Object.entries(categories).map(([category, pages]) => ({
-		params: { category: category.toLowerCase() },
-		props: { category: category, data: pages }
+	return Object.entries(categories).map(([ id, data ]) => ({
+		params: { category: id },
+		props: { ...data }
 	}))
 }
 
-const { data, category } = Astro.props;
-const title = `Category: ${category}`
+const { posts, name, description } = Astro.props;
+const title = `Category: ${name}` 
 ---
 
-<Archive data={data} title={title} />
+<Archive data={ posts } title={ title } description={ description } />

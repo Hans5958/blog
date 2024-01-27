@@ -2,7 +2,7 @@
 title: "Let's talk about Minecraft"
 date: 2018-02-28 21:24:08 +0700
 category: Article
-tags: en old-blog essay games
+tags: en old-blog essay games entertainment
 slug: lets-talk-about-minecraft
 description: Ah, Minecraft. Where all kids do unleash their creativity in a shape of pixelated blocks. Well, I played it too, even I'm not a child anymore. So, in this post. I want to talk about it.
 excerpt: Ah, Minecraft. Where all kids do unleash their creativity in a shape of pixelated blocks. Well, I played it too, even I'm not a child anymore. So, in this post. I want to talk about it.

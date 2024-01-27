@@ -1,29 +1,20 @@
 ---
 import { Icon } from "astro-icon/components"
-import { CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection } from 'astro:content'
 import relativeUrl from '../../components/urlHelper.js'
 import ArchiveIndex from '../../layouts/ArchiveIndex.astro'
+import getCategories from "./getCategories"
 
-const blogEntries = await getCollection('posts')
-
-const categories: { [index: string]: CollectionEntry<'posts'>[] } = {}
-	
-blogEntries.forEach(post => {
-	const category = post.data.category 
-	if (!categories[category]) {
-		categories[category] = []
-	}
-	categories[category].push(post)
-})
+const categories = await getCategories()
 ---
 
 <ArchiveIndex title="Category">
 	<div class="flex flex-wrap">
-		{ Object.keys(categories).map(category => (<>
-			<a href={ relativeUrl('/category/' + category.toLowerCase()) } class="flex flex-row px-4 py-2 rounded border border-gray-300 hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-200 focus:ring focus:ring-blue-500 focus:outline-none active:outline-none mr-2 mb-2" >
+		{ Object.entries(categories).map(([ id, data ]) => (<>
+			<a href={ relativeUrl('/category/' + id) } class="flex flex-row px-4 py-2 rounded border border-gray-300 hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-200 focus:ring focus:ring-blue-500 focus:outline-none active:outline-none mr-2 mb-2" >
 				<Icon name="fa6-solid:folder" class="w-6 h-6 mr-2"></Icon>
-				<div class="-mt-[.1rem] align-middle text-lg font-semibold mr-2">{ category }</div>
-				<div class="mt-[.2rem] text-sm text-gray-500">{ categories[category].length } posts</div>
+				<div class="-mt-[.1rem] align-middle text-lg font-semibold mr-2">{ data.name }</div>
+				<div class="mt-[.2rem] text-sm text-gray-500">{ data.posts.length } posts</div>
 			</a>
 		</>)) }	
 	</div>

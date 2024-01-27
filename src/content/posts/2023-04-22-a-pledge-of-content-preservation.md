@@ -1,7 +1,7 @@
 ---
 title: "A Pledge of Content Preservation"
 date: 2023-04-22 16:35:00 +0700
-category: Article
+category: Bites
 tags: en statement
 slug: a-pledge-of-content-preservation
 description: There are many instances where an entity retracts their content from public view. This has been seen in various cases, and it is not rare to those who are disappointed condemns such action, myself included. With that, I pledge the following.

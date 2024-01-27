@@ -1,5 +1,5 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection } from 'astro:content'
 import relativeUrl from '../components/urlHelper.js';
 import PaginationDummy from '../components/Pagination/Dummy.astro';
 import PostPreviewGrid from '../components/PostPreview/Grid.astro';
@@ -8,13 +8,13 @@ import ArchiveIndex from './ArchiveIndex.astro';
 interface Props {
 	data: CollectionEntry<'posts'>[];
 	title: string;
+	description?: string;
 }
 
-const { data, title } = Astro.props
-// console.log(Astro.url)
+const { data, title, description } = Astro.props
 ---
 
-<ArchiveIndex title={ title }>
+<ArchiveIndex title={ title } description={ description }>
 	<PostPreviewGrid posts={ data.slice(0, 10) } />
-	<PaginationDummy lastPage={ Math.ceil(data.length / 10) } url={ Astro.url.pathname.replace('/blog/', '') + '/page/2' } />
+	<PaginationDummy lastPage={ Math.ceil(data.length / 10) } url={ Astro.url.pathname.replace('/blog', '') + '/page/2' } />
 </ArchiveIndex>

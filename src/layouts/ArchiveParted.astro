@@ -1,6 +1,6 @@
 ---
 import { Page } from 'astro';
-import { CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry, getCollection } from 'astro:content'
 import Pagination from '../components/Pagination/Pagination.astro';
 import PostPreviewGrid from '../components/PostPreview/Grid.astro';
 import ArchiveIndex from './ArchiveIndex.astro';
@@ -8,12 +8,13 @@ import ArchiveIndex from './ArchiveIndex.astro';
 interface Props {
 	page: Page<CollectionEntry<'posts'>>;
 	title: string;
+	description?: string;
 }
 
-const { page, title } = Astro.props;
+const { page, title, description } = Astro.props;
 ---
 
-<ArchiveIndex title={ title }>
+<ArchiveIndex title={ title } description={ description }>
 	<PostPreviewGrid posts={page.data} />
 	<Pagination page={page} />
 </ArchiveIndex>

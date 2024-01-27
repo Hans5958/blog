@@ -1,32 +1,24 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content'
+// This section is primarily made as a backwards compability for the old blog.
+// The old blog also has months, so this is made to support it.
+
+import getMonths from './getMonths'
 import Archive from '../../../layouts/Archive.astro'
 
 export async function getStaticPaths() {
-	const blogEntries = await getCollection('posts')
-	blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-	
-	const dates: { [index: number]: CollectionEntry<'posts'>[] } = {}
-	
-	blogEntries.forEach(post => {
-		const postDate = `${post.data.date.getFullYear()}-${(post.data.date.getMonth() + 1).toString().padStart(2, '0')}`
-		if (!dates[postDate]) {
-			dates[postDate] = []
-		}
-		dates[postDate].push(post)
-	})
+	const months = await getMonths()
 
-	return Object.entries(dates).map(([date, pages]) => {
-		const [year, month] = date.split('-')
+	return Object.entries(months).map(([ date, posts ]) => {
+		const [ year, month ] = date.split('-')
 		return {
-			params: { year, month, },
-			props: { year, month, data: pages }
+			params: { year, month },
+			props: { year, month, posts }
 		}
 	})
 }
 
-const { data, year, month } = Astro.props;
+const { posts, year, month } = Astro.props;
 const title = `Month: ${year}-${month}`
 ---
 
-<Archive data={data} title={title} />
+<Archive data={ posts } title={ title } />
