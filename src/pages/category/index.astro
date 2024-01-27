@@ -1,9 +1,8 @@
 ---
 import { Icon } from "astro-icon/components"
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { getCategories } from "../../components/getPosts.js"
 import relativeUrl from '../../components/urlHelper.js'
 import ArchiveIndex from '../../layouts/ArchiveIndex.astro'
-import getCategories from "./getCategories"
 
 const categories = await getCategories()
 ---

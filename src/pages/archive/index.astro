@@ -7,14 +7,15 @@ import PaginationDummy from '../../components/Pagination/Dummy.astro'
 import PostPreview from '../../components/PostPreview/Post.astro'
 import PostPreviewGrid from '../../components/PostPreview/Grid.astro'
 import ArchiveIndex from '../../layouts/ArchiveIndex.astro'
-import getCategories from "../category/getCategories"
-import getTags from "../tag/getTags"
+import { getCategories } from "../../components/getPosts.js"
+import { getTags } from "../../components/getPosts.js"
+import { getYears } from "../../components/getPosts.js"
 
 const blogEntries = await getCollection('posts')
 
 const tags = await getTags()
 const categories = await getCategories()
-const years: { [index: number]: CollectionEntry<'posts'>[] } = {}
+const years = await getYears()
 		
 blogEntries.forEach(post => {
 	const postYear = post.data.date.getFullYear()
