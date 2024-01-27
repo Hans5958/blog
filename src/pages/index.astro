@@ -30,10 +30,17 @@ blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(
 	</div>
 </section>
 
-<section class="container mx-auto max-w-[1140px] py-12">
-	<h2 class="text-5xl font-bold mb-8">Latest</h2>
-	<PostPreviewGrid posts={blogEntries.slice(0, 10)} />
-	<PaginationDummy lastPage={ Math.ceil(blogEntries.length / 10) } url='/archive/page/2' />
+<section id="latest" class="container mx-auto max-w-[1140px] pt-12 mb-12">
+	<h2 class="text-5xl font-bold">Latest</h2>
+	<p class="mt-4 mb-8">Latest posts of any kind by yours truly. For more posts, check out <a class="color-link" href={ relativeUrl('/archive') }>the archive</a>.</p>
+	<PostPreviewGrid posts={ blogEntries.slice(0, 4) } />
+</section>
+
+<section id="articles" class="container mx-auto max-w-[1140px] mt-12 pb-12">
+	<h2 class="text-5xl font-bold">Articles</h2>
+	<p class="mt-4 mb-8">For more in-depth reading, check out articles made by yours truly.</p>
+	<PostPreviewGrid posts={ blogEntries.filter(post => post.data.category === 'Article' ).slice(0, 10) } />
+	<PaginationDummy lastPage={ Math.ceil(blogEntries.length / 10) } url='/category/article/page/2' />
 </section>
 
 </Default>

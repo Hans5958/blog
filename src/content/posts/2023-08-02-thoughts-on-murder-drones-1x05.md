@@ -1,6 +1,7 @@
 ---
 title: "Thoughts on Murder Drones 1x05 (and some others)"
 date: 2023-08-02 19:00:00 +0700
+dateMod: 2024-01-27 17:50:00 +0700
 category: Article
 tags: en entertainment
 slug: thoughts-on-murder-drones-1x05
@@ -19,6 +20,9 @@ Here are some thoughts that can be put in like tens of Reddit posts and YouTube 
 This section covers what I learned and think of the current episode. For the note, I'm discussing about Home, the fifth episode of Murder Drones, [viewable on YouTube](https://www.youtube.com/watch?v=rk0HBqSqpgg).
 
 ### Cyn: a literal living doll
+
+> Whatever she is and when she's not being weirdly adorable, she is disgusting and disturbing to the extreme.
+> —[Someone on TV Tropes](https://web.archive.org/web/20231004162916/https://tvtropes.org/pmwiki/pmwiki.php/NightmareFuel/MurderDrones)
 
 Now it is settled that that little girl right there on 1x02 is Cyn, which name has been mentioned since 1x01. But what matters most is the horror effect that she emits. 
 

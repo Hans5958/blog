@@ -62,18 +62,6 @@ figure figcaption {
 		@apply px-4 py-0 text-gray-500 border-l-4 border-l-gray-400;
 	}
 
-	a {
-		@apply text-blue-600;
-
-		&:hover, &:focus {
-			@apply underline;
-		}
-
-		&:active {
-			@apply text-blue-900
-		}
-	}
-
 	> code,
 	*:not(.astro-code) code, 
 	tt {
@@ -171,6 +159,21 @@ figure figcaption {
 		@apply pt-4 border-t
 	}
 
+}
+
+
+.markdown a,
+.color-links a,
+a.color-link {
+	@apply text-blue-600;
+
+	&:hover, &:focus {
+		@apply underline;
+	}
+
+	&:active {
+		@apply text-blue-900
+	}
 }
 
 [data-icon^=mdi] {

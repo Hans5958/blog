@@ -2,7 +2,7 @@
 title: "osu! site corrections and reflections"
 date: 2023-01-29 15:43:50 +0700
 date_mod: 2023-04-22 15:12:00 +0700
-category: Article
+category: Bites
 tags: en games
 slug: osu-site-corrections-and-reflections
 excerpt: While doing the makeover of my osu! site (now page), it is so outdated, that I had a feeling to write this blog post as a supplement of it

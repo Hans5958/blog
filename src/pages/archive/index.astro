@@ -29,14 +29,14 @@ blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 
 <ArchiveIndex title="Index">
 
-	<section class="mb-8">
+	<section id="categories" class="mb-8">
 		<h2 class="text-2xl font-semibold mb-4">Categories</h2>
 
 		<div class="flex flex-wrap">
 			{ Object.entries(categories).map(([ id, data ]) => (<>
 				<a href={ relativeUrl('/category/' + id) } class="flex flex-row px-4 py-2 rounded border border-gray-300 hover:bg-gray-100 focus:bg-gray-100 active:bg-gray-200 focus:ring focus:ring-blue-500 focus:outline-none active:outline-none mr-2 mb-2" >
 					<Icon name="fa6-solid:folder" class="w-6 h-6 mr-2"></Icon>
-					<div class="-mt-[.1rem] align-middle text-lg font-semibold mr-2">{ id }</div>
+					<div class="-mt-[.1rem] align-middle text-lg font-semibold mr-2">{ data.name }</div>
 					<div class="mt-[.2rem] text-sm text-gray-500">{ data.posts.length } posts</div>
 				</a>
 			</>)) }	
@@ -44,7 +44,7 @@ blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 	
 	</section>
 
-	<section class="mb-8">
+	<section id="tags" class="mb-8">
 		<h2 class="text-2xl font-semibold mb-4">Tags</h2>
 
 		<div class="flex flex-wrap">
@@ -58,7 +58,7 @@ blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 		</div>
 	</section>
 
-	<section class="mb-8">
+	<section id="years" class="mb-8">
 		<h2 class="text-2xl font-semibold mb-4">Years</h2>
 
 		<div class="flex flex-wrap">
@@ -72,7 +72,7 @@ blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 		</div>
 	</section>
 
-	<section>
+	<section id="latest">
 		<h2 class="text-2xl font-semibold mb-4">Latest</h2>
 
 		<PostPreviewGrid posts={blogEntries.slice(0, 10)} />
