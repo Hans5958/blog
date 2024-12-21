@@ -1,20 +1,20 @@
 ---
-import { MarkdownHeading } from 'astro';
-import TableOfContentsChildren from './TOC1Child.astro';
+import { type MarkdownHeading } from 'astro'
+import TableOfContentsChildren from './TOC1Child.astro'
 
 export interface Props {
-	headings: MarkdownHeading[];
+	headings: MarkdownHeading[]
 }
 
 export interface LeveledMarkdownHeading extends MarkdownHeading {
-	children: LeveledMarkdownHeading[];
+	children: LeveledMarkdownHeading[]
 
 }
 
 const minLevel = 2
 const maxLevel = 6
 
-let { headings: headingsRaw } = Astro.props;
+let { headings: headingsRaw } = Astro.props
 
 const headings: LeveledMarkdownHeading[] = []
 

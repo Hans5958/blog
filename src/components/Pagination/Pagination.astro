@@ -1,14 +1,14 @@
 ---
-import { Icon } from "astro-icon/components";
-import { type Page } from 'astro';
+import { Icon } from "astro-icon/components"
+import { type Page } from 'astro'
 import { type CollectionEntry, getCollection } from 'astro:content'
-import relativeUrl from "../urlHelper.js";
+import relativeUrl from "../urlHelper.js"
 
 interface Props {
-	page: Page<CollectionEntry<'posts'>>;
+	page: Page<CollectionEntry<'posts'>>
 }
 
-const { page } = Astro.props;
+const { page } = Astro.props
 
 ---
 

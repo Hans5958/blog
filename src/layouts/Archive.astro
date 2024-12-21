@@ -1,14 +1,14 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
-import relativeUrl from '../components/urlHelper.js';
-import PaginationDummy from '../components/Pagination/Dummy.astro';
-import PostPreviewGrid from '../components/PostPreview/Grid.astro';
-import ArchiveIndex from './ArchiveIndex.astro';
+import relativeUrl from '../components/urlHelper.js'
+import PaginationDummy from '../components/Pagination/Dummy.astro'
+import PostPreviewGrid from '../components/PostPreview/Grid.astro'
+import ArchiveIndex from './ArchiveIndex.astro'
 
 interface Props {
-	data: CollectionEntry<'posts'>[];
-	title: string;
-	description?: string;
+	data: CollectionEntry<'posts'>[]
+	title: string
+	description?: string
 }
 
 const { data, title, description } = Astro.props

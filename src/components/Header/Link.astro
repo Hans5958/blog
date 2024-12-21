@@ -1,10 +1,10 @@
 ---
 export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className, ...props } = Astro.props
 
-const { pathname } = Astro.url;
-const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+const { pathname } = Astro.url
+const isActive = href === pathname || href === pathname.replace(/\/$/, '')
 ---
 
 <li class="flex items-center">

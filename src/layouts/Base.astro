@@ -1,10 +1,10 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import { BaseProps } from "../config.js";
+import BaseHead from "../components/BaseHead.astro"
+import { BaseProps } from "../config.js"
 
 export interface Props extends BaseProps, astroHTML.JSX.Element {}
 
-const { title, description, coverSrc, coverAlt, noAnalytics, ...props } = Astro.props;
+const { title, description, coverSrc, coverAlt, noAnalytics, ...props } = Astro.props
 ---
 
 <html lang="en">

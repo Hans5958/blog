@@ -1,13 +1,13 @@
 ---
-import { Page } from 'astro';
+import { Page } from 'astro'
 import { type CollectionEntry, getCollection } from 'astro:content'
-import PostPreview from './Post.astro';
+import PostPreview from './Post.astro'
 
 interface Props {
-	posts: CollectionEntry<'posts'>[];
+	posts: CollectionEntry<'posts'>[]
 }
 
-const { posts } = Astro.props;
+const { posts } = Astro.props
 ---
 
 <div class="grid gap-2 grid-cols-1 sm:grid-cols-2">

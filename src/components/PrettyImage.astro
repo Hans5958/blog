@@ -1,9 +1,9 @@
 ---
-import { Image, type ImgAttributes } from "astro:assets";
+import { Image, type ImgAttributes } from "astro:assets"
 
 interface Props extends astroHTML.JSX.ImgHTMLAttributes {}
 
-const props = Astro.props;
+const props = Astro.props
 ---
 
 <figure class={ props.class } id={ props.id } style={ props.style }>

@@ -3,11 +3,11 @@ import { SITE_AUTHOR, SITE_TITLE, SITE_TWITTER } from '../config.js'
 import '../styles/global.css'
 
 export interface Props {
-	title?: string;
-	description?: string;
-	coverSrc?: string;
-	coverAlt?: string;
-	noAnalytics?: boolean;
+	title?: string
+	description?: string
+	coverSrc?: string
+	coverAlt?: string
+	noAnalytics?: boolean
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
