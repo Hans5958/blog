@@ -1,30 +1,29 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import TableOfContents from '../components/TOC/TOC1.astro';
-import TableOfContents2 from '../components/TOC/TOC2.astro';
-import Default from './Default.astro';
+import { type CollectionEntry, render } from 'astro:content'
+import TableOfContents from '../components/TOC/TOC1.astro'
+import TableOfContents2 from '../components/TOC/TOC2.astro'
+import Default from './Default.astro'
 import Giscus from '@giscus/vue'
-import relativeUrl from '../components/urlHelper.js';
+import relativeUrl from '../components/urlHelper.js'
 import { Icon } from "astro-icon/components"
-import readingTime from 'reading-time';
+import readingTime from 'reading-time'
 import { Image } from 'astro:assets'
 import PrettyImage from '../components/PrettyImage.astro'
 
 interface Props {
-  post: CollectionEntry<'posts'>;
+  post: CollectionEntry<'posts'>
 }
 
-// `post` will match your 'blog' collection schema type
-const { post } = Astro.props;
-const { Content, headings } = await post.render();
+const { post } = Astro.props
+const { Content, headings } = await render(post)
 
-const readingTimeMins = Math.round(readingTime(post.body).minutes)
+const readingTimeMins = post?.body ? Math.round(readingTime(post.body).minutes) : 0
 let readingTimeDisplay: string
 if (readingTimeMins === 1) readingTimeDisplay = "1 minute"
 else readingTimeDisplay = readingTimeMins + " minutes"
 ---
 
-<Default title={post.data.title} description={post.data.description} coverSrc={ post.data.cover?.src || relativeUrl('/assets/og/' + post.slug + '.png') } coverAlt={ post.data.coverAlt }>
+<Default title={post.data.title} description={post.data.description} coverSrc={ post.data.cover?.src || relativeUrl('/assets/og/' + post.id + '.png') } coverAlt={ post.data.coverAlt }>
 	
 	<article class="container mx-auto max-w-[1140px] py-6 md:grid md:grid-cols-12 gap-x-6 grid-rows-[min-content_min-content_1fr]" itemscope itemtype="http://schema.org/BlogPosting">
 

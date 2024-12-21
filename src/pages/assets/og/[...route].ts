@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content'
-import { remark } from 'remark';
+import { remark } from 'remark'
 import remarkStrip from 'strip-markdown'
 import { OGImageRoute } from 'astro-og-canvas'
 
@@ -7,8 +7,8 @@ const posts = {}
 
 for (const post of await getCollection('posts')) {
 	if (post.data.cover) continue
-	posts[post.slug] = {}
-	posts[post.slug].title = post.data.title
+	posts[post.id] = {}
+	posts[post.id].title = post.data.title
 	let excerpt = ""
 
 	if (post.data.excerpt) {
@@ -17,7 +17,7 @@ for (const post of await getCollection('posts')) {
 			.process(post.data.excerpt)
 		excerpt = excerptUnified.toString()
 	}
-		posts[post.slug].description = excerpt 
+		posts[post.id].description = excerpt 
 }
 
 
