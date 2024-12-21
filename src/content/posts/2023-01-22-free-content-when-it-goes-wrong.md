@@ -2,12 +2,17 @@
 title: "Free content: When it goes wrong"
 date: 2023-01-22 19:07:00 +0700
 category: Article
-tags: en copyright essay wiki
+tags: 
+  - en
+  - copyright
+  - essay
+  - wiki
 slug: free-content-when-it-goes-wrong
-excerpt: You just created a free content. What's that? Someone use your creation for money? Here's a little blabber of when it goes wrong. 
-description: You just created a free content. What's that? Someone use your creation for money? Here's a little blabber of when it goes wrong. 
+excerpt: You just created a free content. What's that? Someone use your creation for money? Here's a little blabber of when it goes wrong.
+description: You just created a free content. What's that? Someone use your creation for money? Here's a little blabber of when it goes wrong.
 cover: ../../assets/free-content-when-it-goes-wrong/cover.png
 coverAlt: A screenshot of the Creative Commons Attribution 4.0 International license (CC BY 4.0) template from Wikimedia Commons. This license is one of the free content license that authors can choose. The template is used to indicate files that are licensed with the license. (CC BY-SA 3.0)
+fmContentType: posts
 ---
 
 You just created a [free content](https://en.wikipedia.org/wiki/Free_content). You publish it on the public space and let people use your content freely. I said that you are cool. What's that? Someone use your creation for money? I mean, didn't you said that's a free content? Here's a little blabber of when it goes wrong. 

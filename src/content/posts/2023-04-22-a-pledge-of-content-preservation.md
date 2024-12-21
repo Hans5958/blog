@@ -2,10 +2,13 @@
 title: "A Pledge of Content Preservation"
 date: 2023-04-22 16:35:00 +0700
 category: Bites
-tags: en statement
+tags: 
+  - en
+  - statement
 slug: a-pledge-of-content-preservation
 description: There are many instances where an entity retracts their content from public view. This has been seen in various cases, and it is not rare to those who are disappointed condemns such action, myself included. With that, I pledge the following.
 excerpt: There are many instances where an entity retracts their content from public view. This has been seen in various cases, and it is not rare to those who are disappointed condemns such action, myself included. With that, I pledge the following.
+fmContentType: posts
 ---
 
 > This article has been published on https://gist.github.com/Hans5958/3add4c985ba8b5c95a23e585b7cc7c69, which has been reposted and updated in this blog.

@@ -10,7 +10,7 @@ export const collections = {
       date: z.string().transform(str => new Date(str)),
       dateMod: z.string().transform(str => new Date(str)).optional(),
       category: z.string().default('Uncategorized'),
-      tags: z.string().default('').transform(str => str.split(' ')),
+      tags: z.string().array().optional(),
       description: z.string().default(''),
       excerpt: z.string().default(''),
       cover: image().optional(),

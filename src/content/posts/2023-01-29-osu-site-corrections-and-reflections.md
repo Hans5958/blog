@@ -3,10 +3,13 @@ title: "osu! site corrections and reflections"
 date: 2023-01-29 15:43:50 +0700
 date_mod: 2023-04-22 15:12:00 +0700
 category: Bites
-tags: en games
+tags: 
+  - en
+  - games
 slug: osu-site-corrections-and-reflections
 excerpt: While doing the makeover of my osu! site (now page), it is so outdated, that I had a feeling to write this blog post as a supplement of it
 description: While doing the makeover of my osu! site (now page), it is so outdated, that I had a feeling to write this blog post as a supplement of it. I want to keep the authenticity of the page as it is a trace of my past, so the makeover does not include every correction, which is mentioned here instead. It is also a chance for me to reflect on the past of me.
+fmContentType: posts
 ---
 
 Few years ago, I copied my osu! website from Google Pages to my website on GitHub in such unprocessed form. With the website rewrite using Astro, I have decided to also do a makeover of this page.

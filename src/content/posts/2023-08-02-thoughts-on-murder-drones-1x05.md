@@ -3,12 +3,15 @@ title: "Thoughts on Murder Drones 1x05 (and some others)"
 date: 2023-08-02 19:00:00 +0700
 dateMod: 2024-01-27 17:50:00 +0700
 category: Article
-tags: en entertainment
+tags: 
+  - en
+  - entertainment
 slug: thoughts-on-murder-drones-1x05
 description: "It's my first time watching a new episode in less than 24 hours after release, and it's been in my head for a while. Here are some thoughts about the epsiode, the series, and the entertainment media."
 excerpt: "It's my first time watching a new episode in less than 24 hours after release, and it's been in my head for a while. Here are some thoughts about the epsiode, the series, and the entertainment media as a whole."
 cover: ../../assets/thoughts-on-murder-drones-1x05/cover.jpg
 coverAlt: '"They are not broken. We can no longer be thrown out." said Cyn (left) in this moment of the episode, made as an screenshot.'
+fmContentType: posts
 ---
 
 It's my first time watching a new episode on the release day, and it's been in my head for a while. Horror series are not my preference, but when it comes to robots, I try to watch them.[^walle] In the year of the pandemic, and then the latter years, this is now become one of the series that I anticipate, and it sure is interesting.

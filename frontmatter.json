@@ -1,0 +1,91 @@
+{
+	"$schema": "https://frontmatter.codes/frontmatter.schema.json",
+	"frontMatter.framework.id": "astro",
+	"frontMatter.preview.host": "http://localhost:4321",
+	"frontMatter.content.publicFolder": {
+		"path": "src/assets",
+		"relative": true
+	},
+	"frontMatter.content.pageFolders": [
+		{
+			"title": "posts",
+			"path": "[[workspace]]/src/content/posts",
+			"contentTypes": [
+				"posts"
+			]
+		}
+	],
+	"frontMatter.taxonomy.contentTypes": [
+		{
+			"name": "posts",
+			"previewPath": "'posts'",
+			"pageBundle": false,
+			"clearEmpty": true,
+			"fields": [
+				{
+					"title": "Title",
+					"name": "title",
+					"type": "string"
+				},
+				{
+					"title": "Slug",
+					"name": "slug",
+					"type": "slug"
+				}
+				{
+					"title": "Date created",
+					"name": "date",
+					"type": "datetime",
+					"isPublishDate": true
+				},
+				{
+					"title": "Date modified",
+					"name": "dateMod",
+					"type": "datetime",
+					"isModifiedDate": true
+				},
+				{
+					"title": "Category",
+					"name": "category",
+					"type": "categories",
+					"singleValueAsString": true
+				},
+				{
+					"title": "Tags",
+					"name": "tags",
+					"type": "tags",
+					"single": true
+				},
+				{
+					"title": "Description",
+					"name": "description",
+					"type": "string",
+					"description": "Short text shown on search engines and social media"
+				},
+				{
+					"title": "Excerpt",
+					"name": "excerpt",
+					"type": "string",
+					"description": "Short text shown on page"
+				},
+				{
+					"title": "Cover image",
+					"name": "cover",
+					"type": "string",
+					"isPreviewImage": true,
+				},
+				{
+					"title": "Cover image alt text",
+					"name": "coverAlt",
+					"type": "string"
+				},
+				{
+					"title": "Redirect from URL",
+					"name": "redirectFrom",
+					"type": "list"
+				}
+			]
+		}
+	],
+	"frontMatter.git.enabled": true
+}

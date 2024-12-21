@@ -2,12 +2,15 @@
 title: "Google Assistant's The Riddle Doors Answers"
 date: 2018-07-03 00:00:10 +0700
 category: Bites
-tags: en old-blog
+tags: 
+  - en
+  - old-blog
 slug: google-assistants-the-riddle-doors-answers
 description: Here's a filler content, if you know what I mean. If you ask Google Assistant to tell a riddle, you will be playing the game called "The Riddle Doors". The game consist of 12 riddles, each having it's own storyboard. After the game ends, the game will loop. If you exit in the middle of the game, your progress will be saved. Here are the question that are asked. 
 excerpt: If you ask Google Assistant to tell a riddle, you will be playing the game called "The Riddle Doors". Here are the question that are asked. 
 redirectFrom: 
   - /2018/07/02/google-assistants-the-riddle-doors-answers
+fmContentType: posts
 ---
 
 Here's a filler content, if you know what I mean. If you ask Google Assistant to tell a riddle, you will be playing the game called "The Riddle Doors". The game consist of 12 riddles, each having it's own storyboard. After the game ends, the game will loop. If you exit in the middle of the game, your progress will be saved. Here are the question that are asked. 

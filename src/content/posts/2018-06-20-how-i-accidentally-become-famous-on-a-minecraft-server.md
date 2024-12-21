@@ -2,12 +2,18 @@
 title: 'How I accidentally become famous on a Minecraft server'
 date: 2018-06-20 21:31:09 +0700
 category: Article
-tags: en old-blog story games entertainment
+tags: 
+  - en
+  - old-blog
+  - story
+  - games
+  - entertainment
 slug: how-i-accidentally-become-famous-on-a-minecraft-server
 description: Hello everyone. It's been a while since my last post. Let me tell you my story of how I accidentally become famous on a Minecraft server.
 excerpt: Let me tell you my story of how I accidentally become famous on a Minecraft server. 
 redirectFrom: 
   - /2018/06/20/how-i-accidentally-become-famous-on-a-minecraft-server
+fmContentType: posts
 ---
 
 Hello everyone. It's been a while since my last post. Let me tell you my story of how I accidentally become famous on a Minecraft server. 
