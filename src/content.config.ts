@@ -10,12 +10,12 @@ export const collections = {
       date: z.string().transform(str => new Date(str)),
       dateMod: z.string().transform(str => new Date(str)).optional(),
       category: z.string().default('Uncategorized'),
-      tags: z.string().array().optional(),
+      tags: z.string().array().default([]),
       description: z.string().default(''),
       excerpt: z.string().default(''),
       cover: image().optional(),
       coverAlt: z.string().default(''),
-      redirectFrom: z.string().array().optional(),
+      redirectFrom: z.string().array().default([]),
     })
   }),
 

@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@utility container {
+	padding-inline: 1rem;
+}
 
 figure figcaption {
 	@apply mt-2 text-gray-500 text-sm
@@ -76,7 +78,7 @@ figure figcaption {
 	}
 
 	pre {
-		@apply bg-gray-50 !important;
+		@apply bg-gray-50;
 		word-wrap: normal;
 		> code {
 			@apply p-0 m-0 break-normal border-0 bg-transparent whitespace-pre;

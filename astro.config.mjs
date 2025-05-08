@@ -1,11 +1,10 @@
 import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-import tailwind from "@astrojs/tailwind"
+import tailwindcss from '@tailwindcss/vite'
 import vue from "@astrojs/vue"
 import compress from "astro-compress"
-import lightningcss from 'vite-plugin-lightningcss'
-import icon from "astro-icon";
+import icon from "astro-icon"
 import { prettyImages } from './src/plugins/pretty-images'
 
 // https://astro.build/config
@@ -14,9 +13,6 @@ export default defineConfig({
 	base: '/blog/',
 	integrations: [
 		mdx(), sitemap(), vue(), icon(),
-		tailwind({
-			applyBaseStyles: false
-		}),
 		import.meta.env.MODE === "production" && compress({
 			img: false
 		}),
@@ -35,10 +31,8 @@ export default defineConfig({
 	},
 	vite: {
 		plugins: [
-			lightningcss({
-				browserslist: '>= 0.25%',
-			}),
-		]
+			tailwindcss()
+		],
 	},
 	compressHTML: false
 })

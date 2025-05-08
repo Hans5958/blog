@@ -7,10 +7,10 @@ tags:
   - en
   - old-blog
 redirectFrom: 
+  - /2018/02/25/hello-world
 slug: hello-world
 description: Hello, welcome to my new blog. Here, I will post my stuff or something. Right now, I want to start it with (maybe) posting my old stuff, and then I'll add other stuff. Stay tuned!
 excerpt: Hello, welcome to my new blog. Here, I will post my stuff or something. Right now, I want to start it with (maybe) posting my old stuff, and then I'll add other stuff.
-  - /2018/02/25/hello-world
 fmContentType: posts
 ---
 
