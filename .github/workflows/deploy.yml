@@ -25,9 +25,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Build site
-        uses: withastro/action@v1
-        with:
-          node-version: 20
+        uses: withastro/action@v4
 
   deploy:
     name: Deployment
@@ -39,4 +37,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
