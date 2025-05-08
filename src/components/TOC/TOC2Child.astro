@@ -19,24 +19,10 @@ let { headings } = Astro.props
 <ul class="ml-6">
 	{ headings.map(heading => (<>
 		<li>
-			<a href={ "#" + heading.slug }>{ heading.text }</a>
+			<a href={ "#" + heading.slug } class="block mt-0.5 rounded transition hover:underline">{ heading.text }</a>
 			{ heading.children.length > 0 && ( <>
 				<Astro.self headings={heading.children} />
 			</> ) }
 		</li>
 	</>)) }	
 </ul>
-
-<style>
-	@import "tailwindcss";
-
-	a {
-		@apply block mt-0.5 rounded transition;
-
-		&:hover {
-			@apply underline
-		}
-	}
-
-
-</style>

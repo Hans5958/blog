@@ -158,7 +158,11 @@ figure figcaption {
 	}
 
 	.footnotes {
-		@apply pt-4 border-t
+		@apply pt-4 border-t border-gray-300
+	}
+
+	hr {
+		@apply border-gray-300
 	}
 
 }

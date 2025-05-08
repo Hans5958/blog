@@ -19,25 +19,10 @@ let { headings } = Astro.props
 <ul class="ml-6">
 	{ headings.map(heading => (<>
 		<li>
-			<a href={ "#" + heading.slug }>{ heading.text }</a>
+			<a href={ "#" + heading.slug } class="block -mx-2 px-2 py-1 mt-0.5 rounded transition active:bg-gray-100 hover:bg-gray-100">{ heading.text }</a>
 			{ heading.children.length > 0 && ( <>
 				<Astro.self headings={heading.children} />
 			</> ) }
 		</li>
 	</>)) }	
 </ul>
-
-<style>
-	@import "tailwindcss";
-
-	@media screen(md) {
-		a {
-			@apply block -mx-2 px-2 py-1 mt-0.5 rounded transition
-		}
-
-		a.active,
-		a:hover {
-			@apply bg-gray-100
-		}
-	}
-</style>
