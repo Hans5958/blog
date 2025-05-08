@@ -1,5 +1,5 @@
 ---
-import { SITE_AUTHOR, SITE_TITLE, SITE_TWITTER } from '../config.js'
+import { SITE_AUTHOR, SITE_TITLE, SITE_TWITTER, SITE_MASTODON } from '../config.js'
 import '../styles/global.css'
 
 export interface Props {
@@ -58,3 +58,5 @@ if (title === "") {
 <meta name="twitter:url" content={ Astro.url } />
 <meta name="twitter:title" content={ title } />
 <meta name="twitter:description" content={ description } />
+
+<meta name="fediverse:creator" content={ SITE_MASTODON }>
