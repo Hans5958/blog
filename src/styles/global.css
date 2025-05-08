@@ -113,7 +113,7 @@ figure figcaption {
 		}
 
 		tr {
-			@apply border-t-gray-300 border-t;
+			@apply border-gray-300 border-t;
 			
 			
 			&:nth-child(2n) {
