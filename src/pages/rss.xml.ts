@@ -1,7 +1,7 @@
 import rss from '@astrojs/rss'
 import { getCollection } from 'astro:content'
 import relativeUrl from '../components/urlHelper.js'
-import { SITE_TITLE } from '../config.js'
+import { SITE_TITLE, SITE_AUTHOR } from '../config.js'
 
 export async function GET(context) {
   const blog = (await getCollection('posts')).sort((a, b) => Number(b.data.date) - Number(a.data.date))
@@ -16,14 +16,14 @@ export const generateRssFromPosts = (title, description, context, posts) => {
     items: posts.map((post) => {
       const customData: string[] = []
 
-      customData.push('<dc:creator><![CDATA[Hans5958]]></dc:creator>')
+      customData.push('<dc:creator><![CDATA[' + SITE_AUTHOR + ']]></dc:creator>')
 
       if (post.data.dateMod) {
         customData.push(`<atom:updated>${new Date(post.data.dateMod).toISOString()}</atom:updated>`)
       }
       
       if (post.data.cover?.src) {
-        customData.push(`<media:thumbnail url="${relativeUrl(post.data.cover?.src)}" />`)
+        customData.push(`<media:thumbnail url="${post.data.cover?.src}" />`)
       }
 
       return {
