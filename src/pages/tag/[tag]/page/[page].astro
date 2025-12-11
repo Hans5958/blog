@@ -1,6 +1,6 @@
 ---
-import { getTags } from '../../../../components/getPosts.js'
-import ArchiveParted from '../../../../layouts/ArchiveParted.astro'
+import { getTags } from '@/lib/getPosts'
+import ArchiveParted from '@/layouts/ArchiveParted.astro'
 
 export async function getStaticPaths({ paginate }) {
 	const tags = await getTags()

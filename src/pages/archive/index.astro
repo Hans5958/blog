@@ -1,15 +1,11 @@
 ---
 import { Icon } from "astro-icon/components"
-import { type CollectionEntry, getCollection } from 'astro:content'
-import relativeUrl from '../../components/urlHelper.js'
-import Pagination from '../../components/Pagination/Pagination.astro'
-import PaginationDummy from '../../components/Pagination/Dummy.astro'
-import PostPreview from '../../components/PostPreview/Post.astro'
-import PostPreviewGrid from '../../components/PostPreview/Grid.astro'
-import ArchiveIndex from '../../layouts/ArchiveIndex.astro'
-import { getCategories } from "../../components/getPosts.js"
-import { getTags } from "../../components/getPosts.js"
-import { getYears } from "../../components/getPosts.js"
+import { getCollection } from 'astro:content'
+import relativeUrl from '@/lib/urlHelper'
+import PaginationDummy from '@/components/Pagination/Dummy.astro'
+import PostPreviewGrid from '@/components/PostPreview/Grid.astro'
+import ArchiveIndex from '@/layouts/ArchiveIndex.astro'
+import { getCategories, getTags, getYears } from "@/lib/getPosts"
 
 const blogEntries = await getCollection('posts')
 

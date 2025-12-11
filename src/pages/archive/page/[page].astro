@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content'
-import ArchiveParted from '../../../layouts/ArchiveParted.astro'
+import ArchiveParted from '@/layouts/ArchiveParted.astro'
 
 export async function getStaticPaths({ paginate }) {
 	const blogEntries = await getCollection('posts')

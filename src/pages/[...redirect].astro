@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
-import relativeUrl from '../components/urlHelper.js'
-import Redirect from '../layouts/Redirect.astro'
+import relativeUrl from '@/lib/urlHelper'
+import Redirect from '@/layouts/Redirect.astro'
 
 export async function getStaticPaths() {
 	const blogEntries = await getCollection('posts')

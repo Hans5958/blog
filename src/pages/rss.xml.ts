@@ -1,7 +1,7 @@
 import rss from '@astrojs/rss'
 import { getCollection } from 'astro:content'
-import relativeUrl from '../components/urlHelper.js'
-import { SITE_TITLE, SITE_AUTHOR } from '../config.js'
+import relativeUrl from '@/lib/urlHelper'
+import { SITE_TITLE, SITE_AUTHOR } from '@/config'
 
 export async function GET(context) {
   const blog = (await getCollection('posts')).sort((a, b) => Number(b.data.date) - Number(a.data.date))

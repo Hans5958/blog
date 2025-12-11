@@ -1,6 +1,6 @@
 ---
-import { getMonths } from '../../../../components/getPosts.js'
-import ArchiveParted from '../../../../layouts/ArchiveParted.astro'
+import { getMonths } from '@/lib/getPosts'
+import ArchiveParted from '@/layouts/ArchiveParted.astro'
 
 export async function getStaticPaths({ paginate }) {
 	const months = await getMonths()

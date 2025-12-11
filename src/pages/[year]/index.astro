@@ -1,6 +1,6 @@
 ---
-import { getYears } from '../../components/getPosts.js'
-import Archive from '../../layouts/Archive.astro'
+import { getYears } from '@/lib/getPosts'
+import Archive from '@/layouts/Archive.astro'
 
 export async function getStaticPaths() {
 	const years = await getYears()

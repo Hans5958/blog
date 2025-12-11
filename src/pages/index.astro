@@ -1,12 +1,12 @@
 ---
-import Default from '../layouts/Default.astro'
+import Default from '@/layouts/Default.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
 import Icon from 'astro-icon'
 
 import { getCollection } from 'astro:content'
-import PostPreviewGrid from '../components/PostPreview/Grid.astro'
-import PaginationDummy from '../components/Pagination/Dummy.astro'
-import relativeUrl from '../components/urlHelper.js'
+import PostPreviewGrid from '@/components/PostPreview/Grid.astro'
+import PaginationDummy from '@/components/Pagination/Dummy.astro'
+import relativeUrl from '@/lib/urlHelper'
 
 const blogEntries = await getCollection('posts')
 blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 10)
