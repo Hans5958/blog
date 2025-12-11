@@ -168,9 +168,7 @@ figure figcaption {
 }
 
 
-.markdown a,
-.color-links a,
-a.color-link {
+.markdown a {
 	@apply text-blue-600;
 
 	&:hover, &:focus {

@@ -1,23 +1,23 @@
 ---
 import { Icon } from "astro-icon/components"
 import { COMMIT_HASH, COMMIT_HASH_SHORT, COPYRIGHT_YEAR, SITE_AUTHOR, SITE_REPOSITORY } from "@/config"
-import { COMMIT_HASH, COMMIT_HASH_SHORT, COPYRIGHT_YEAR, SITE_AUTHOR, SITE_REPOSITORY } from "../config.js"
+import A from "@/components/Anchor.astro"
 ---
 
 <footer class="py-4 bg-gray-800 text-white">
 	<div class="container mx-auto max-w-[1140px] grid gap-2 sm:grid-cols-2">
 		<div>
 			<p>Copyright © { COPYRIGHT_YEAR } { SITE_AUTHOR }</p>
-			<p>Posts licensed under <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY + '/blob/master/LICENSE.md' }>CC BY-SA 4.0</a>.</p>
-			<p>Code licensed under <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY + '/blob/master/LICENSE-code.md' }>MIT License</a>.</p>
+			<p>Posts licensed under <A class="text-sky-400 active:text-sky-600" href={ SITE_REPOSITORY + '/blob/master/LICENSE.md' }>CC BY-SA 4.0</A>.</p>
+			<p>Code licensed under <A class="text-sky-400 active:text-sky-600" href={ SITE_REPOSITORY + '/blob/master/LICENSE-code.md' }>MIT License</A>.</p>
 		</div>
 		<div class="sm:text-right">
 			<p>
-				<Icon name="simple-icons:github" class="w-4 h-4 inline align-[-.125rem]" /> <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY }>Site repository</a>
+				<Icon name="simple-icons:github" class="w-4 h-4 inline align-[-.125rem]" /> <A class="text-sky-400 active:text-sky-600" href={ SITE_REPOSITORY }>Site repository</A>
 				<span class="font-black">·</span>
-				Revision: <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY + '/commit/' + COMMIT_HASH }><code>{ COMMIT_HASH_SHORT }</code></a>
+				Revision: <A class="text-sky-400 active:text-sky-600" href={ SITE_REPOSITORY + '/commit/' + COMMIT_HASH }><code>{ COMMIT_HASH_SHORT }</code></A>
 			</p>
-			<p><Icon name="bi:envelope-exclamation-fill" class="w-4 h-4 inline align-[-.125rem]" /> Found an issue? <a class="text-sky-400 hover:underline focus:underline active:text-sky-600" href={ SITE_REPOSITORY + '/issues' }>Please report!</a></p>
+			<p><Icon name="bi:envelope-exclamation-fill" class="w-4 h-4 inline align-[-.125rem]" /> Found an issue? <A class="text-sky-400 active:text-sky-600" href={ SITE_REPOSITORY + '/issues' }>Please report!</A></p>
 		</div>
 	</div>
 </footer>

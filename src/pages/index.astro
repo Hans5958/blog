@@ -1,7 +1,6 @@
 ---
 import Default from '@/layouts/Default.astro'
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
-import Icon from 'astro-icon'
+import A from "@/components/Anchor.astro"
 
 import { getCollection } from 'astro:content'
 import PostPreviewGrid from '@/components/PostPreview/Grid.astro'
@@ -32,7 +31,7 @@ blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(
 
 <section id="latest" class="container mx-auto max-w-[1140px] pt-12 mb-12">
 	<h2 class="text-5xl font-bold">Latest</h2>
-	<p class="mt-4 mb-8">Latest posts of any kind by yours truly. For more posts, check out <a class="color-link" href={ relativeUrl('/archive') }>the archive</a>.</p>
+	<p class="mt-4 mb-8">Latest posts of any kind by yours truly. For more posts, check out <A href={ relativeUrl('/archive') }>the archive</a>.</A>
 	<PostPreviewGrid posts={ blogEntries.slice(0, 4) } />
 </section>
 

@@ -1,0 +1,17 @@
+---
+import { cn } from "@/lib/utils.ts"
+
+let props = Astro.props as astroHTML.JSX.AnchorHTMLAttributes & { unset: boolean }
+
+if (props.href?.toString().startsWith('http')) {
+	props.target ??= "_blank"
+	props.rel ??= "noopener noreferrer"
+}
+---
+<a
+	class={cn(
+		!props.unset && "text-sky-600 hover:text-sky-800 active:text-sky-900 focus:underline",
+		props.class
+	)}
+	{...props}
+><slot /></a>
