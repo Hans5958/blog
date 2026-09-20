@@ -1,0 +1,6 @@
+allowBuilds:
+  esbuild: true
+  sharp: true
+minimumReleaseAgeExclude:
+  - '@iconify-json/octicon@1.2.36'
+  - '@iconify-json/simple-icons@1.2.97'
