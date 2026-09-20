@@ -31,8 +31,8 @@ blogEntries.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(
 
 <section id="latest" class="container mx-auto max-w-[1140px] pt-12 mb-12">
 	<h2 class="text-5xl font-bold">Latest</h2>
-	<p class="mt-4 mb-8">Latest posts of any kind by yours truly. For more posts, check out <A href={ relativeUrl('/archive') }>the archive</a>.</A>
-	<PostPreviewGrid posts={ blogEntries.slice(0, 4) } />
+	<p class="mt-4 mb-8">Latest posts of any kind by yours truly. For more posts, check out <A href={ relativeUrl('/archive') }>the archive</A>.
+	<PostPreviewGrid posts={ blogEntries.slice(0, 4) } /></p>
 </section>
 
 <section id="articles" class="container mx-auto max-w-[1140px] mt-12 pb-12">

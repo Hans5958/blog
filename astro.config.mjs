@@ -6,6 +6,7 @@ import vue from "@astrojs/vue"
 import compress from "astro-compress"
 import icon from "astro-icon"
 import { prettyImages } from './src/plugins/pretty-images'
+import { unified } from '@astrojs/markdown-remark'
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,13 +19,15 @@ export default defineConfig({
 		}),
 	],
 	markdown: {
-		shikiConfig: {
-			theme: 'github-light',
-			langs: []
-		},
-		rehypePlugins: [
-			prettyImages
-		],
+		processor: unified({
+			shikiConfig: {
+				theme: 'github-light',
+				langs: []
+			},
+			rehypePlugins: [
+				prettyImages
+			],
+		}),
 	},
 	image: {
 		remotePatterns: [{ protocol: "https" }],
@@ -33,6 +36,9 @@ export default defineConfig({
 		plugins: [
 			tailwindcss()
 		],
+		ssr: {
+			noExternal: ['cookie']
+		}
 	},
 	compressHTML: false
 })

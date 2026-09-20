@@ -1,51 +1,58 @@
-// Adapted from JuanM04/portfolio
-// https://github.com/JuanM04/portfolio/blob/main/src/plugins/better-images.ts
-
 import type { RehypePlugin } from "@astrojs/markdown-remark"
 import { visit } from "unist-util-visit"
+import type { Element } from "hast"
 
-export const prettyImages: RehypePlugin<[]> = () => tree => {
-	visit(tree, "element", (node, _index, parent) => {
-
-		let alt
-
+export const prettyImages: RehypePlugin<[]> = () => (tree) => {
+	visit(tree, "element", (node: Element, index, parent) => {
+		// Paragraph wrapping a single image (<p><img/></p>)
 		if (node.tagName === "p") {
+			// Filter out non-semantic whitespace nodes created by markdown formatting
+			const nonTextChildren = node.children.filter(
+				(child) => !(child.type === "text" && child.value.trim() === "")
+			)
 
-			if (node.children.length !== 1) return
-			const children = node.children[0]
-			if (children.name !== "astro-image" && children.tagName !== "img") return
+			if (nonTextChildren.length !== 1) return
+
+			const target = nonTextChildren[0]
+			if (
+				target.type !== "element" ||
+				(target.tagName !== "img" && target.tagName !== "astro-image")
+			) return
+
+			const alt = target.properties?.alt as string | undefined
+
+			// Transform <p> into <figure>
 			node.tagName = "figure"
+			node.children = [target]
 
-			alt = children?.properties?.alt || children?.attributes?.filter(entry => entry.name === 'alt')?.[0]?.value
+			if (alt && alt.trim() !== "") {
+				node.children.push({
+					type: "element",
+					tagName: "figcaption",
+					properties: {},
+					children: [{ type: "text", value: alt }],
+				})
+			}
+			return
+		}
 
-		} else if (node.tagName === "img") {
-			if (parent?.type === "element" && parent?.tagName === "figure") return
-
-			const imgNode = structuredClone(node)
+		// Standalone <img> not inside <p> or <figure>
+		if (node.tagName === "img" && parent?.type === "element" && parent.tagName !== "figure") {
+			const alt = node.properties?.alt as string | undefined
+			const imgCopy = { ...node }
 
 			node.tagName = "figure"
 			node.properties = {}
-			node.children = []
+			node.children = [imgCopy]
 
-			node.children.push({
-				...imgNode,
-				type: "element",
-			})
-
-			alt = node.properties?.alt
-
-		} else return
-
-		if (alt) {
-			node.children.push({
-				type: "element",
-				tagName: "figcaption",
-				properties: {},
-				children: [{ type: "text", value: alt }],
-			})
+			if (alt && alt.trim() !== "") {
+				node.children.push({
+					type: "element",
+					tagName: "figcaption",
+					properties: {},
+					children: [{ type: "text", value: alt }],
+				})
+			}
 		}
-
-
-
 	})
 }

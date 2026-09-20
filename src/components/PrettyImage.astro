@@ -1,12 +1,27 @@
 ---
-import { Image, type ImgAttributes } from "astro:assets"
+import { Image } from "astro:assets";
+import type { ComponentProps } from "astro/types";
 
-interface Props extends astroHTML.JSX.ImgHTMLAttributes {}
+interface Props extends ComponentProps<typeof Image> {
+	figureClass?: string;
+	figureId?: string;
+	figureStyle?: string | Record<string, any>;
+}
 
-const props = Astro.props
+const {
+	figureClass,
+	figureId,
+	figureStyle,
+	class: imgClass,
+	style: imgStyle,
+	alt,
+	...imageProps
+} = Astro.props;
+
+const hasCaption = typeof alt === "string" && alt.trim().length > 0;
 ---
 
-<figure class={ props.class } id={ props.id } style={ props.style }>
-	<Image { ...props } class={ null } id={ null } style={ null }></Image>
-	<figcaption>{ props.alt }</figcaption>
+<figure class={figureClass} id={figureId} style={figureStyle}>
+	<Image {...imageProps} alt={alt ?? ""} class={imgClass} style={imgStyle} />
+	{hasCaption && <figcaption>{alt}</figcaption>}
 </figure>

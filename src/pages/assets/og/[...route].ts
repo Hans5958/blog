@@ -3,12 +3,19 @@ import { remark } from 'remark'
 import remarkStrip from 'strip-markdown'
 import { OGImageRoute } from 'astro-og-canvas'
 
-const posts = {}
+const posts: {
+	[index: string]: {
+		title: string,
+		description: string
+	}
+} = {}
 
 for (const post of await getCollection('posts')) {
 	if (post.data.cover) continue
-	posts[post.id] = {}
-	posts[post.id].title = post.data.title
+	posts[post.id] = {
+		title: post.data.title,
+		description: ""
+	}
 	let excerpt = ""
 
 	if (post.data.excerpt) {
@@ -21,14 +28,12 @@ for (const post of await getCollection('posts')) {
 }
 
 
-export const { getStaticPaths, GET } = OGImageRoute({
-	param: 'route',
-
+export const { getStaticPaths, GET } = await OGImageRoute({
 	pages: posts,
 
-	getImageOptions: (path, post) => ({
-		title: post.title,
-		description: post.description,
+	getImageOptions: (path, page) => ({
+		title: page.title,
+		description: page.description,
 		bgGradient: [[51, 65, 85], [100, 116, 139]],
 		logo: {
 			path: './src/assets/images/site-logo.png',
