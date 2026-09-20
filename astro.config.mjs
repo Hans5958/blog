@@ -10,7 +10,7 @@ import { unified } from '@astrojs/markdown-remark'
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://hans5958.github.io/blog/',
+	site: 'https://blog.hans5958.id/',
 	base: '/blog/',
 	integrations: [
 		mdx(), sitemap(), vue(), icon(),
